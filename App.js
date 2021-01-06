@@ -1,6 +1,6 @@
 import React from 'react'
 import {View, Text, StyleSheet} from 'react-native'
-import {Colors, Fonts} from 'src/assets'
+import {Colors, Fonts, Vectors} from 'src/assets'
 import {pipe} from '@synvox/rehook'
 
 const styles = StyleSheet.create({
@@ -16,9 +16,11 @@ const styles = StyleSheet.create({
 })
 
 const App = () => {
+  const EyeOpen = Vectors.eyeOpen
   return (
     <View style={styles.container}>
       <Text style={styles.text}>dd</Text>
+      <EyeOpen width={23} height={23} color={Colors.greyChateau} />
     </View>
   )
 }
