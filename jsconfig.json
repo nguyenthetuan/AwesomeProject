@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+      "allowJs": true,
+      "allowSyntheticDefaultImports": true,
+      "experimentalDecorators": true,
+      "resolveJsonModule": true,
+      "jsx": "react",
+      "module": "es6",
+      "moduleResolution": "node",
+      "baseUrl": ".",
+      "paths": {
+          "@src/*" : ["./src/*"] // alias similar to defined in .babelrc
+      },
+      "sourceMap": true,
+      "target": "ES6"
+  },
+  "exclude": [
+      "node_modules"
+  ]
+}
