@@ -13,6 +13,7 @@ module.exports = {
     'react/no-deprecated': 'warn',
     'react-native/no-inline-styles': 'warn',
     'react-native/no-color-literals': 'warn',
+
     'react-native/no-raw-text': [
       'warn',
       {
@@ -20,6 +21,7 @@ module.exports = {
       },
     ],
     // error
+
     'prettier/prettier': [
       'error',
       {
@@ -38,7 +40,7 @@ module.exports = {
       },
     ],
     'no-empty': 'error',
-    'react/jsx-closing-bracket-location': 'error',
+    // 'react/jsx-closing-bracket-location': 'error',
     'react/jsx-closing-tag-location': 'error',
     'react/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],
     'react/jsx-handler-names': [

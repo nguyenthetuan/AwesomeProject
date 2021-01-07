@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="73.45" height="73.45" viewBox="0 0 73.45 73.45">
+    <defs>
+        <filter id="Ellipse_3" width="73.45" height="73.45" x="0" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="-3"/>
+            <feGaussianBlur result="blur" stdDeviation="1.5"/>
+            <feFlood flood-opacity=".149"/>
+            <feComposite in2="blur" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <style>
+            .cls-2{fill:none;stroke:#fff;stroke-linecap:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <g id="Group_2" transform="translate(-155 -561.5)">
+        <g filter="url(#Ellipse_3)" transform="translate(155 561.5)">
+            <circle id="Ellipse_3-2" cx="32.225" cy="32.225" r="32.225" fill="#0e38b1" transform="translate(4.5 7.5)"/>
+        </g>
+        <g id="Group_1" transform="translate(177.914 587.488)">
+            <path id="Path_3" d="M0 0v27.621" class="cls-2" transform="rotate(90 6.905 20.716)"/>
+            <path id="Path_4" d="M212.409 516.064v27.621" class="cls-2" transform="translate(-198.599 -516.064)"/>
+        </g>
+    </g>
+</svg>
