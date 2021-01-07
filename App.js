@@ -20,6 +20,7 @@ const App = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>dd</Text>
+      <Text style={styles.text}>dd</Text>
       <EyeOpen width={23} height={23} color={Colors.greyChateau} />
     </View>
   )
