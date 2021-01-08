@@ -1,11 +1,20 @@
 import React from 'react'
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native'
-import {pipe} from '@synvox/rehook'
+import { View, StyleSheet, TouchableOpacity } from 'react-native'
+import { pipe } from '@synvox/rehook'
+import { Text } from 'react-native-elements'
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+})
 
 const EquipmentStack = () => {
   return (
-    <View>
-      <Text>EquipmentStack</Text>
+    <View style={styles.container}>
+      <Text>Coming soon</Text>
     </View>
   )
 }

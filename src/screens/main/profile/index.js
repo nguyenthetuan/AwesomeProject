@@ -1,7 +1,7 @@
 import React from 'react'
-import {View, StyleSheet, TouchableOpacity} from 'react-native'
-import {Text} from 'react-native-elements'
-import {pipe} from '@synvox/rehook'
+import { View, StyleSheet } from 'react-native'
+import { Text } from 'react-native-elements'
+import { pipe } from '@synvox/rehook'
 
 const styles = StyleSheet.create({
   container: {
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 const ProfileStack = () => {
   return (
     <View style={styles.container}>
-      <Text>Profile stack</Text>
+      <Text>Coming soon</Text>
     </View>
   )
 }

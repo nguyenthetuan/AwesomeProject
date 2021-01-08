@@ -1,31 +1,20 @@
 /* eslint-disable react/jsx-no-bind */
-
 import React from 'react'
-import {NavigationContainer} from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native'
 import TaskStack from './TaskStack'
 import EquipmentStack from './EquipmentStack'
 import ProfileStack from './ProfileStack'
 import UsersStack from './UsersStack'
-import {pipe} from '@synvox/rehook'
-import {View, TouchableOpacity, StyleSheet} from 'react-native'
-import {Text} from 'react-native-elements'
-import {Colors, Fonts} from 'src/assets'
-import {createStackNavigator} from '@react-navigation/stack'
-import {
-  createBottomTabNavigator,
-  BottomTabBar,
-} from '@react-navigation/bottom-tabs'
-import {Vectors} from 'src/assets'
+import { pipe } from '@synvox/rehook'
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import { Text } from 'react-native-elements'
+import { Colors, Fonts, Vectors } from 'src/assets'
+import { createStackNavigator } from '@react-navigation/stack'
+import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 const styles = StyleSheet.create({
-  textMenu: {
-    fontSize: Fonts.fontSize[14],
-    textAlign: 'center',
-    marginTop: 12,
-  },
-  wrapperIcon: {
-    marginTop: 18,
-    marginBottom: 4,
+  btAddNew: {
+    marginTop: -40,
   },
   tabBar: {
     borderTopWidth: 0,
@@ -39,8 +28,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 6,
   },
-  btAddNew: {
-    marginTop: -40,
+  textMenu: {
+    fontSize: Fonts.fontSize[14],
+    marginTop: 12,
+    textAlign: 'center',
+  },
+  wrapperIcon: {
+    marginBottom: 4,
+    marginTop: 18,
   },
 })
 
@@ -60,13 +55,9 @@ const AddNew = () => {
 
 const ContainerStack = createStackNavigator()
 const BottomTab = createBottomTabNavigator()
-const getColor = (isFocused) =>
-  isFocused ? Colors.blueEgyptian : Colors.greyChateau
+const getColor = (isFocused) => (isFocused ? Colors.blueEgyptian : Colors.greyChateau)
 
-const getFont = (isFocused) =>
-  isFocused
-    ? Fonts.fontFamily.NunitoSansBold
-    : Fonts.fontFamily.NunitoSansSemiBold
+const getFont = (isFocused) => (isFocused ? Fonts.fontFamily.NunitoSansBold : Fonts.fontFamily.NunitoSansSemiBold)
 
 const AddNewNull = () => {
   return null
@@ -88,7 +79,7 @@ const BottomStackV = () => {
         component={ProfileStack}
         name="ProfileStack"
         options={{
-          tabBarLabel: ({focused}) => (
+          tabBarLabel: ({ focused }) => (
             <Text
               style={{
                 ...styles.textMenu,
@@ -98,7 +89,7 @@ const BottomStackV = () => {
               Profile
             </Text>
           ),
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <View style={styles.wrapperIcon}>
               <IconProfile fill={getColor(focused)} height={24} width={24} />
             </View>
@@ -110,7 +101,7 @@ const BottomStackV = () => {
         component={TaskStack}
         name="TaskStack"
         options={{
-          tabBarLabel: ({focused}) => (
+          tabBarLabel: ({ focused }) => (
             <Text
               style={{
                 ...styles.textMenu,
@@ -120,7 +111,7 @@ const BottomStackV = () => {
               Task
             </Text>
           ),
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <View style={styles.wrapperIcon}>
               <IconTask fill={getColor(focused)} height={24} width={24} />
             </View>
@@ -129,8 +120,8 @@ const BottomStackV = () => {
       />
 
       <BottomTab.Screen
-        name="AddNew"
         component={AddNewNull}
+        name="AddNew"
         options={{
           tabBarButton: () => <AddNew />,
         }}
@@ -140,7 +131,7 @@ const BottomStackV = () => {
         component={EquipmentStack}
         name="EquipmentStack"
         options={{
-          tabBarLabel: ({focused}) => (
+          tabBarLabel: ({ focused }) => (
             <Text
               style={{
                 ...styles.textMenu,
@@ -150,7 +141,7 @@ const BottomStackV = () => {
               Equipment
             </Text>
           ),
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <View style={styles.wrapperIcon}>
               <IconEquipment fill={getColor(focused)} height={24} width={24} />
             </View>
@@ -162,7 +153,7 @@ const BottomStackV = () => {
         component={UsersStack}
         name="UsersStack"
         options={{
-          tabBarLabel: ({focused}) => (
+          tabBarLabel: ({ focused }) => (
             <Text
               style={{
                 ...styles.textMenu,
@@ -172,7 +163,7 @@ const BottomStackV = () => {
               Users
             </Text>
           ),
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <View style={styles.wrapperIcon}>
               <IconUsers fill={getColor(focused)} height={24} width={24} />
             </View>
