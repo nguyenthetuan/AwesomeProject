@@ -1,34 +1,18 @@
 import 'react-native-gesture-handler'
+import {enableScreens} from 'react-native-screens'
 import React from 'react'
-import {View, Text, StyleSheet} from 'react-native'
-import {Colors, Fonts, Vectors} from 'src/assets'
 import {pipe} from '@synvox/rehook'
 import MainStack from 'src/navigation/MainStack'
+import ThemeProvider from 'src/screens/components/ThemeProvider'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    fontFamily: Fonts.fontFamily.NunitoSansRegular,
-    fontSize: Fonts.fontSize[26],
-  },
-})
-
-// const App = () => {
-//   const EyeOpen = Vectors.eyeOpen
-//   return (
-//     <View style={styles.container}>
-//       <Text style={styles.text}>dd</Text>
-//       <EyeOpen width={23} height={23} color={Colors.greyChateau} />
-//     </View>
-//   )
-// }
+enableScreens()
 
 const App = () => {
-  return <MainStack />
+  return (
+    <ThemeProvider>
+      <MainStack />
+    </ThemeProvider>
+  )
 }
 
 export default pipe(App)
