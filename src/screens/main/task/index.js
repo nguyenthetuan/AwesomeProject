@@ -1,13 +1,55 @@
 import React from 'react'
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native'
-import {pipe} from '@synvox/rehook'
+import { Text, View, StyleSheet, PixelRatio, Dimensions } from 'react-native'
+import { pipe } from '@synvox/rehook'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+import Inprogress from './litst/Inprogress'
+import New from './litst/New'
+import Completed from './litst/Completed'
+import Overdue from './litst/Overdue'
+import All from './litst/All'
+import { Colors, Fonts } from 'src/assets'
+
+const { width, height } = Dimensions.get('window')
+
+const Tab = createMaterialTopTabNavigator()
 
 const TaskStack = () => {
   return (
-    <View>
-      <Text>Task Stack</Text>
-    </View>
+    <Tab.Navigator
+      initialRouteName="Feed"
+      tabBarOptions={{
+        activeTintColor: Colors.orangeNeonCarrot,
+        inactiveTintColor: Colors.white,
+        labelStyle: styles.labelStyle,
+        style: { backgroundColor: '#0E38B1', height: 80, justifyContent: 'flex-end' },
+        indicatorStyle: styles.indicatorStyle,
+        // scrollEnabled:true
+      }}>
+      <Tab.Screen name="new" component={New} options={{ tabBarLabel: 'New' }} />
+      <Tab.Screen name="In progress" component={Inprogress} />
+      <Tab.Screen name="Completed" component={Completed} />
+      <Tab.Screen name="Overdue" component={Overdue} />
+      <Tab.Screen name="All" component={All} />
+    </Tab.Navigator>
   )
 }
 
+const styles = StyleSheet.create({
+  labelStyle: {
+    fontSize: 12,
+    textTransform: 'capitalize',
+    fontFamily: Fonts.fontFamily.NunitoSansBold,
+    width: width / 5,
+  },
+  indicatorStyle: {
+    backgroundColor: '#F98E2F',
+    height: 1,
+    width: width / 5,
+    borderBottomWidth: 1,
+    borderBottomColor: '#F98E2F',
+    borderBottomWidth: 1,
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
+  },
+})
 export default pipe(TaskStack)

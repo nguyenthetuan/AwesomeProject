@@ -8,6 +8,6 @@ export default {
   black02: '#020202',
   black: '#000000',
   blueEgyptian: '#0E38B1',
-  orangeNeonCarrot: '#FF9C42',
+  orangeNeonCarrot: '#FF9B42',
   redFireBrick: '#A52422',
 }
