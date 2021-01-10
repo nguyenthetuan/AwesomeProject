@@ -5,6 +5,7 @@ import TaskStack from './TaskStack'
 import EquipmentStack from './EquipmentStack'
 import ProfileStack from './ProfileStack'
 import UsersStack from './UsersStack'
+import DetailTaskStack from 'src/screens/main/task/detail/DetailVM'
 import { pipe } from '@synvox/rehook'
 import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import { Text } from 'react-native-elements'
@@ -66,7 +67,7 @@ const AddNewNull = () => {
 const BottomStackV = () => {
   return (
     <BottomTab.Navigator
-      initialRouteName="ProfileStack"
+      initialRouteName="TaskStack"
       tabBar={(props) => (
         <BottomTabBar
           {...props}
@@ -187,6 +188,7 @@ const MainStack = () => {
             headerShown: false,
           }}
         />
+        <ContainerStack.Screen component={DetailTaskStack} name="DetailTask" options={{ headerShown: false }} />
       </ContainerStack.Navigator>
     </NavigationContainer>
   )
