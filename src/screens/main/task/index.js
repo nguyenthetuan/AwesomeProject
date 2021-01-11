@@ -24,12 +24,15 @@ const TaskStack = () => {
         style: { backgroundColor: '#0E38B1', height: 80, justifyContent: 'flex-end' },
         indicatorStyle: styles.indicatorStyle,
         // scrollEnabled:true
-      }}>
-      <Tab.Screen name="new" component={New} options={{ tabBarLabel: 'New' }} />
-      <Tab.Screen name="In progress" component={Inprogress} />
+      }}
+    >
+      <Tab.Screen
+        name="new" component={New} options={{ tabBarLabel: 'New' }}
+      />
+      {/* <Tab.Screen name="Inprogress" component={Inprogress} />
       <Tab.Screen name="Completed" component={Completed} />
       <Tab.Screen name="Overdue" component={Overdue} />
-      <Tab.Screen name="All" component={All} />
+      <Tab.Screen name="All" component={All} /> */}
     </Tab.Navigator>
   )
 }

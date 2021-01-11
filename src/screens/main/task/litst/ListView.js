@@ -2,9 +2,13 @@ import React from 'react'
 import { View, StyleSheet, TouchableOpacity, FlatList, TextInput, Dimensions, Image } from 'react-native'
 import { Text } from 'react-native-elements'
 import { Colors, Fonts, Vectors } from 'src/assets'
+import SearchInput, { createFilter } from 'react-native-search-filter'
 import dayjs from 'dayjs'
 
 const { width, height } = Dimensions.get('window')
+
+const KEYS_TO_FILTER = ['title']
+
 const IconSearch = Vectors.Search
 
 const renderStatus = (item) => {
@@ -43,11 +47,7 @@ const renderStatus = (item) => {
 const renderItem = ({ item, index }) => {
   return (
     <TouchableOpacity style={styles.itemTask}>
-      <Image
-        source={require('src/assets/Images/itemTask.png')}
-        style={{ width: 105, height: 86, borderRadius: 14, backgroundColor: 'blue' }}
-        resizeMode="contain"
-      />
+      <Image source={require('src/assets/images/itemTask.png')} style={{ width: 105, height: 86, borderRadius: 14 }} resizeMode="contain" />
       <View style={styles.leftItem}>
         <Text style={styles.txtTitle} numberOfLines={1}>
           {item.title}
@@ -74,25 +74,34 @@ const footer = () => {
   )
 }
 
-const keyExtractor = (item) => `${item?.id}`
+const keyExtractor = ({ index }) => `${index}`
 
-const ListView = ({ dataConvert }) => {
+
+const ListView = ({ dataConvert, sortDataConvert, navigation, textSearch, changeText }) => {
+  // let filterData = dataConvert.filter(createFilter(textSearch, KEYS_TO_FILTER))
+  console.log('dataConvert', dataConvert)
   return (
     <View style={styles.container}>
       <View style={styles.body}>
         <View style={styles.textInputSearch}>
-          <TextInput style={styles.txtInput } placeholder="Enter keywords" />
+          <TextInput onChangeText={changeText} style={styles.txtInput} placeholder="Enter keywords" />
           <TouchableOpacity style={styles.iconSearch}>
             <IconSearch />
           </TouchableOpacity>
         </View>
         <View style={styles.btnSort}>
           <Text>Sort by:</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('SortTask', { sortdata: (typeSort) => sortDataConvert(typeSort) })}>
             <Text style={styles.txtLatest}>Latest Start Date</Text>
           </TouchableOpacity>
         </View>
-        <FlatList data={dataConvert}  showsHorizontalScrollIndicator={false} keyExtractor={keyExtractor} renderItem={renderItem} ListFooterComponent={footer} />
+        <FlatList
+          data={dataConvert}
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={keyExtractor}
+          renderItem={(item, index) => renderItem(item, index, navigation)}
+          ListFooterComponent={footer}
+        />
       </View>
     </View>
   )
@@ -122,6 +131,7 @@ const styles = StyleSheet.create({
   txtLatest: {
     color: Colors.blueEgyptian,
     textDecorationLine: 'underline',
+    marginLeft: 5,
   },
   itemTask: {
     flexDirection: 'row',
@@ -164,43 +174,50 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 12,
-    paddingVertical: 4,
+    paddingVertical: 3,
     alignSelf: 'flex-start',
   },
   textNewStatus: {
     fontFamily: Fonts.fontFamily.NunitoSansBold,
-    fontSize: 14,
+    fontSize: 12,
   },
   InProgressStatus: {
     backgroundColor: Colors.whiteQuartz,
-    borderRadius: 13,
-    width: '40%',
+    borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 3,
+    alignSelf: 'flex-start',
   },
   completeStatus: {
     backgroundColor: Colors.blueEgyptian,
-    borderRadius: 13,
-    width: '45%',
+    borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 3,
+    alignSelf: 'flex-start',
   },
   txtCompleted: {
     fontFamily: Fonts.fontFamily.NunitoSansBold,
-    fontSize: 14,
+    fontSize: 12,
     color: Colors.white,
   },
   overdueStatus: {
     backgroundColor: Colors.greyChateau,
-    borderRadius: 13,
-    width: '35%',
+    borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 3,
+    alignSelf: 'flex-start',
   },
   txtInput: {
     height: 40,
-    paddingLeft: 15
-  }
+    paddingLeft: 15,
+    paddingRight: 35,
+  },
 })
 
 export default ListView

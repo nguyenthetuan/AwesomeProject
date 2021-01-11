@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 const ProfileStack = () => {
   return (
     <View style={styles.container}>
-      <Text>Coming soon</Text>
+      <Text>Coming Soon</Text>
     </View>
   )
 }
