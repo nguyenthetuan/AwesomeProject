@@ -7,10 +7,12 @@ import Header from 'src/screens/components/Header'
 const keyExtractor = (index) => index.toString()
 const IconRadio = Vectors.ReadioBtn
 
-const renderItem = ({ onPressItem, indexSelect }) => ({ item, index }) => {
+const renderItem = ({ onPressItem, indexSelect, typeSort, route }) => ({ item, index }) => {
+  console.log('route',route)
+
   return (
     <TouchableOpacity onPress={onPressItem(index)} style={styles.item}>
-      <View style={styles.Radiobtn}>{index === indexSelect && <IconRadio size={24} />}</View>
+      <View style={styles.Radiobtn}>{(route.params.typeSort === index) && <IconRadio size={24} />}</View>
       <Text style={styles.txtTitle}>{item.title}</Text>
     </TouchableOpacity>
   )
@@ -21,12 +23,12 @@ const goBack = (navigation, router, indexSelect) => {
   navigation.goBack()
 }
 
-const Sort = ({ data, onPressItem, indexSelect, onPressSort, route, navigation }) => {
+const Sort = ({ data, onPressItem, indexSelect, typeSort, route, navigation }) => {
   return (
     <View style={styles.contaier}>
       <Header title="Sort by" leftTittle="Cancel" />
       <View style={styles.body}>
-        <FlatList data={data} keyExtractor={keyExtractor} renderItem={renderItem({ onPressItem, indexSelect })} />
+        <FlatList data={data} keyExtractor={keyExtractor} renderItem={renderItem({ onPressItem, indexSelect, typeSort, route })} />
         <TouchableOpacity onPress={() => goBack(navigation, route, indexSelect)} style={styles.btnApply}>
           <Text style={styles.txtApply}>APPLY</Text>
         </TouchableOpacity>

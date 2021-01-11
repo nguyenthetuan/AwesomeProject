@@ -1,13 +1,8 @@
 import React from 'react'
-import { View, StyleSheet, TouchableOpacity, FlatList, TextInput, Dimensions, Image } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, FlatList, TextInput, Image } from 'react-native'
 import { Text } from 'react-native-elements'
 import { Colors, Fonts, Vectors } from 'src/assets'
-import SearchInput, { createFilter } from 'react-native-search-filter'
 import dayjs from 'dayjs'
-
-const { width, height } = Dimensions.get('window')
-
-const KEYS_TO_FILTER = ['title']
 
 const IconSearch = Vectors.Search
 
@@ -44,7 +39,7 @@ const renderStatus = (item) => {
   }
 }
 
-const renderItem = ({ item, index }) => {
+const renderItem = (navigation) => ({ item, index }) => {
   return (
     <TouchableOpacity style={styles.itemTask}>
       <Image source={require('src/assets/images/itemTask.png')} style={{ width: 105, height: 86, borderRadius: 14 }} resizeMode="contain" />
@@ -66,20 +61,17 @@ const renderItem = ({ item, index }) => {
   )
 }
 
-const footer = () => {
+const footer = (dataConvert) => {
   return (
     <View style={styles.footerFlastList}>
-      <Text>Showing 1/1 of all item</Text>
+      <Text>Showing {dataConvert.length}/{dataConvert.length} of all item</Text>
     </View>
   )
 }
 
-const keyExtractor = ({ index }) => `${index}`
+const keyExtractor = (item, index) => `${index}`
 
-
-const ListView = ({ dataConvert, sortDataConvert, navigation, textSearch, changeText }) => {
-  // let filterData = dataConvert.filter(createFilter(textSearch, KEYS_TO_FILTER))
-  console.log('dataConvert', dataConvert)
+const ListView = ({ dataConvert, sortDataConvert, navigation, changeText }) => {
   return (
     <View style={styles.container}>
       <View style={styles.body}>
@@ -97,10 +89,10 @@ const ListView = ({ dataConvert, sortDataConvert, navigation, textSearch, change
         </View>
         <FlatList
           data={dataConvert}
-          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
           keyExtractor={keyExtractor}
-          renderItem={(item, index) => renderItem(item, index, navigation)}
-          ListFooterComponent={footer}
+          renderItem={renderItem(navigation)}
+          ListFooterComponent={footer(dataConvert)}
         />
       </View>
     </View>
@@ -161,6 +153,7 @@ const styles = StyleSheet.create({
   footerFlastList: {
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 30
   },
   iconSearch: {
     height: 16,

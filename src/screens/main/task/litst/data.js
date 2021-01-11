@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 
-export const data = [
+export const dataTest = [
   {
     type: 1,
     title: 'a',
@@ -75,7 +75,7 @@ export const data = [
   },
   {
     type: 3,
-    title: 'Task 4',
+    title: 'ryg',
     timeStart: dayjs('2019-5-25').valueOf(),
     timeEnd: dayjs('2019-04-28').valueOf(),
     description: 'Lorem ipsum dolor sit amet, conse',
@@ -83,7 +83,7 @@ export const data = [
   },
   {
     type: 3,
-    title: 'Task 4',
+    title: 'lkfhdf',
     timeStart: dayjs('2019-01-25').valueOf(),
     timeEnd: dayjs('2019-01-28').valueOf(),
     description: 'Lorem ipsum dolor sit amet, conse',
@@ -91,7 +91,7 @@ export const data = [
   },
   {
     type: 4,
-    title: 'Task 4',
+    title: 'jgjf',
     timeStart: dayjs('2019-01-25').valueOf(),
     timeEnd: dayjs('2019-09-28').valueOf(),
     description: 'Lorem ipsum dolor sit amet, conse',
@@ -99,7 +99,7 @@ export const data = [
   },
   {
     type: 4,
-    title: 'Task 4',
+    title: 'utydg',
     timeStart: dayjs('2019-01-25').valueOf(),
     timeEnd: dayjs('2019-08-28').valueOf(),
     description: 'Lorem ipsum dolor sit amet, conse',
@@ -107,7 +107,7 @@ export const data = [
   },
   {
     type: 4,
-    title: 'Task 4',
+    title: 'sdfdg',
     timeStart: dayjs('2019-01-25').valueOf(),
     timeEnd: dayjs('2019-02-28').valueOf(),
     description: 'Lorem ipsum dolor sit amet, conse',
@@ -115,7 +115,7 @@ export const data = [
   },
   {
     type: 4,
-    title: 'Task 4',
+    title: 'tsd',
     timeStart: dayjs('2019-01-25').valueOf(),
     timeEnd: dayjs('2019-06-28').valueOf(),
     description: 'Lorem ipsum dolor sit amet, conse',

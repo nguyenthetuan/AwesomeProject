@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, StyleSheet, PixelRatio, Dimensions } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 import { pipe } from '@synvox/rehook'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import Inprogress from './litst/Inprogress'
@@ -9,7 +9,7 @@ import Overdue from './litst/Overdue'
 import All from './litst/All'
 import { Colors, Fonts } from 'src/assets'
 
-const { width, height } = Dimensions.get('window')
+const { width } = Dimensions.get('window')
 
 const Tab = createMaterialTopTabNavigator()
 
@@ -24,15 +24,12 @@ const TaskStack = () => {
         style: { backgroundColor: '#0E38B1', height: 80, justifyContent: 'flex-end' },
         indicatorStyle: styles.indicatorStyle,
         // scrollEnabled:true
-      }}
-    >
-      <Tab.Screen
-        name="new" component={New} options={{ tabBarLabel: 'New' }}
-      />
-      {/* <Tab.Screen name="Inprogress" component={Inprogress} />
+      }}>
+      <Tab.Screen name="new" component={New} options={{ tabBarLabel: 'New' }} />
+      <Tab.Screen name="Inprogress" component={Inprogress} />
       <Tab.Screen name="Completed" component={Completed} />
       <Tab.Screen name="Overdue" component={Overdue} />
-      <Tab.Screen name="All" component={All} /> */}
+      <Tab.Screen name="All" component={All} />
     </Tab.Navigator>
   )
 }

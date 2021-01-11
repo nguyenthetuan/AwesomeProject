@@ -1,11 +1,23 @@
 import ListView from './ListView'
-import { pipe, withHandlers, withState, lifecycle } from '@synvox/rehook'
-import { data } from './data'
+import { pipe, withHandlers, withState, lifecycle, withProps } from '@synvox/rehook'
+import { dataTest } from './data'
+import _ from 'lodash'
 
 export default pipe(
   withState('textSearch', 'setTextSearch', ''),
-  withState('dataConvert', 'setData', data),
+  withState('termData', 'updateTermData', dataTest),
+  withProps(({ data, textSearch, termData }) => {
+    if (textSearch) {
+      termData = _.filter(termData, (item) => item.title.toLowerCase().includes(textSearch.toLowerCase()))
+    }
+    return {
+      dataConvert: termData,
+    }
+  }),
   withHandlers({
+    changeText: ({ setTextSearch }) => (text) => {
+      setTextSearch(text)
+    },
     sortUp: () => (property) => {
       return (a, b) => {
         if (a[property] < b[property]) {
@@ -30,23 +42,23 @@ export default pipe(
     },
   }),
   withHandlers({
-    sortDataConvert: ({ dataConvert, setData, sortDow, sortUp }) => (typeSort) => {
+    sortDataConvert: ({ dataConvert, updateTermData, sortDow, sortUp }) => (typeSort) => {
       switch (typeSort) {
         case 0:
           const dataUp = [...dataConvert.sort(sortUp('title'))]
-          setData(dataUp)
+          updateTermData(dataUp)
           break
         case 1:
           const dataDow = [...dataConvert.sort(sortDow())]
-          setData(dataDow)
+          updateTermData(dataDow)
           break
         case 2:
           const dataTimeStart = [...dataConvert.sort(sortUp('timeStart'))]
-          setData(dataTimeStart)
+          updateTermData(dataTimeStart)
           break
         case 3:
           const dataTimeEnd = [...dataConvert.sort(sortUp('timeEnd'))]
-          setData(dataTimeEnd)
+          updateTermData(dataTimeEnd)
           break
         default:
           break
