@@ -6,6 +6,8 @@ import _ from 'lodash'
 export default pipe(
   withState('textSearch', 'setTextSearch', ''),
   withState('data', 'setData', dataTest),
+  withState('typeSort', 'setTypeSort', Number),
+  
   withState('termData', 'updateTermData', ({ data }) => {
     let newData = []
     _.forEach(data, (item) => {
