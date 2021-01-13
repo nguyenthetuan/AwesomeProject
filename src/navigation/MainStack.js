@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/jsx-no-bind */
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
@@ -12,6 +13,7 @@ import { Text } from 'react-native-elements'
 import { Colors, Fonts, Vectors } from 'src/assets'
 import { createStackNavigator } from '@react-navigation/stack'
 import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { SafeAreaInsetsContext } from 'react-native-safe-area-context'
 
 const styles = StyleSheet.create({
   btAddNew: {
@@ -20,7 +22,6 @@ const styles = StyleSheet.create({
   tabBar: {
     borderTopWidth: 0,
     elevation: 14,
-    marginTop: -40,
     shadowColor: Colors.black,
     shadowOffset: {
       width: 0,
@@ -32,11 +33,11 @@ const styles = StyleSheet.create({
   textMenu: {
     fontSize: Fonts.fontSize[14],
     marginTop: 12,
+    marginBottom: 4,
     textAlign: 'center',
   },
   wrapperIcon: {
-    marginBottom: 4,
-    marginTop: 18,
+    marginTop: 20,
   },
 })
 
@@ -68,14 +69,23 @@ const BottomStackV = () => {
   return (
     <BottomTab.Navigator
       initialRouteName="TaskStack"
-      tabBar={(props) => (
-        <BottomTabBar
-          {...props}
-          style={{
-            ...styles.tabBar,
-          }}
-        />
-      )}>
+      tabBar={(props) => {
+        return (
+          <SafeAreaInsetsContext.Consumer>
+            {(insets) => {
+              return (
+                <BottomTabBar
+                  {...props}
+                  style={{
+                    ...styles.tabBar,
+                    height: insets.bottom ? 94 : 60,
+                  }}
+                />
+              )
+            }}
+          </SafeAreaInsetsContext.Consumer>
+        )
+      }}>
       <BottomTab.Screen
         component={ProfileStack}
         name="ProfileStack"
