@@ -2,10 +2,13 @@ import ListView from './ListView'
 import { pipe, withHandlers, withState, lifecycle, withProps } from '@synvox/rehook'
 import { dataTest } from './data'
 import _ from 'lodash'
+import sortBy from './unitls'
+
 
 export default pipe(
   withState('textSearch', 'setTextSearch', ''),
   withState('termData', 'updateTermData', dataTest),
+  withState('typeSort', 'setTypeSort', Number),
   withProps(({ data, textSearch, termData }) => {
     if (textSearch) {
       termData = _.filter(termData, (item) => item.title.toLowerCase().includes(textSearch.toLowerCase()))
@@ -64,6 +67,9 @@ export default pipe(
           break
       }
     },
+  }),
+  withHandlers({
+    sortBy: ({ navigation, setTypeSort, sortDataConvert, typeSort }) => () => sortBy({ navigation, setTypeSort, sortDataConvert, typeSort })
   }),
   lifecycle({
     componentDidMount() {

@@ -22,6 +22,7 @@ const TaskStack = () => {
         inactiveTintColor: Colors.white,
         labelStyle: styles.labelStyle,
         style: { backgroundColor: '#0E38B1', height: 80, justifyContent: 'flex-end' },
+        tabStyle: { justifyContent: 'space-between' },
         indicatorStyle: styles.indicatorStyle,
         // scrollEnabled:true
       }}>

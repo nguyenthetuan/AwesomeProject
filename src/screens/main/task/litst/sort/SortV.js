@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, TouchableOpacity, FlatList, TextInput, Dimensions, Image } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, FlatList } from 'react-native'
 import { Text } from 'react-native-elements'
 import { Colors, Fonts, Vectors } from 'src/assets'
 import Header from 'src/screens/components/Header'
@@ -7,29 +7,24 @@ import Header from 'src/screens/components/Header'
 const keyExtractor = (index) => index.toString()
 const IconRadio = Vectors.ReadioBtn
 
-const renderItem = ({ onPressItem, indexSelect, typeSort, route }) => ({ item, index }) => {
-  console.log('route',route)
-
+const renderItem = ({ onPressItem, indexSelect, typeSort }) => ({ item, index }) => {
   return (
     <TouchableOpacity onPress={onPressItem(index)} style={styles.item}>
-      <View style={styles.Radiobtn}>{(route.params.typeSort === index) && <IconRadio size={24} />}</View>
+      <View style={styles.Radiobtn}>{indexSelect === index && <IconRadio size={24} />}</View>
       <Text style={styles.txtTitle}>{item.title}</Text>
     </TouchableOpacity>
   )
 }
 
-const goBack = (navigation, router, indexSelect) => {
-  router.params.sortdata(indexSelect)
-  navigation.goBack()
-}
-
-const Sort = ({ data, onPressItem, indexSelect, typeSort, route, navigation }) => {
+const Sort = ({ data, onPressItem, indexSelect, typeSort, route, goBack }) => {
   return (
     <View style={styles.contaier}>
       <Header title="Sort by" leftTittle="Cancel" />
       <View style={styles.body}>
         <FlatList data={data} keyExtractor={keyExtractor} renderItem={renderItem({ onPressItem, indexSelect, typeSort, route })} />
-        <TouchableOpacity onPress={() => goBack(navigation, route, indexSelect)} style={styles.btnApply}>
+        <TouchableOpacity
+          onPress={goBack(indexSelect)}
+          style={styles.btnApply}>
           <Text style={styles.txtApply}>APPLY</Text>
         </TouchableOpacity>
       </View>

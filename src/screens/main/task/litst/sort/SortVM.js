@@ -1,5 +1,5 @@
 import SortV from './SortV'
-import { pipe, withHandlers, withState, lifecycle } from '@synvox/rehook'
+import { pipe, withHandlers, withState } from '@synvox/rehook'
 
 export default pipe(
   withState('data', 'setData', [
@@ -20,10 +20,14 @@ export default pipe(
       index: 4,
     },
   ]),
-  withState('indexSelect', 'setIndexSelect', Number),
+  withState('indexSelect', 'setIndexSelect', ({ route }) => route.params?.typeSort),
   withHandlers({
     onPressItem: ({ setIndexSelect }) => (index) => () => {
       setIndexSelect(index)
+    },
+    goBack: ({ navigation, route }) => (indexSelect) => () => {
+      route.params.sortdata(indexSelect)
+      navigation.goBack()
     },
   }),
   SortV,

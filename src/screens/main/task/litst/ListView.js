@@ -39,9 +39,11 @@ const renderStatus = (item) => {
   }
 }
 
-const renderItem = (navigation) => ({ item, index }) => {
+const renderItem = ({ onPressItem }) => ({ item, index }) => {
   return (
-    <TouchableOpacity style={styles.itemTask}>
+    <TouchableOpacity
+      onPress={onPressItem}
+      style={styles.itemTask}>
       <Image source={require('src/assets/images/itemTask.png')} style={{ width: 105, height: 86, borderRadius: 14 }} resizeMode="contain" />
       <View style={styles.leftItem}>
         <Text style={styles.txtTitle} numberOfLines={1}>
@@ -71,7 +73,7 @@ const footer = (dataConvert) => {
 
 const keyExtractor = (item, index) => `${index}`
 
-const ListView = ({ dataConvert, sortDataConvert, navigation, changeText }) => {
+const ListView = ({ dataConvert, changeText, onPressItem, sortBy }) => {
   return (
     <View style={styles.container}>
       <View style={styles.body}>
@@ -83,7 +85,7 @@ const ListView = ({ dataConvert, sortDataConvert, navigation, changeText }) => {
         </View>
         <View style={styles.btnSort}>
           <Text>Sort by:</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('SortTask', { sortdata: (typeSort) => sortDataConvert(typeSort) })}>
+          <TouchableOpacity onPress={sortBy}>
             <Text style={styles.txtLatest}>Latest Start Date</Text>
           </TouchableOpacity>
         </View>
@@ -91,7 +93,7 @@ const ListView = ({ dataConvert, sortDataConvert, navigation, changeText }) => {
           data={dataConvert}
           showsVerticalScrollIndicator={false}
           keyExtractor={keyExtractor}
-          renderItem={renderItem(navigation)}
+          renderItem={renderItem({ onPressItem })}
           ListFooterComponent={footer(dataConvert)}
         />
       </View>
