@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     backgroundColor: Colors.blueEgyptian,
-    paddingTop: 42,
+    paddingTop: 24,
   },
   indicator: {
     height: 2,
