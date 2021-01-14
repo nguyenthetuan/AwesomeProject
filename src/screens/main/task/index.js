@@ -10,8 +10,9 @@ import All from './litst/All'
 import { Colors, Fonts } from 'src/assets'
 
 const Tab = createMaterialTopTabNavigator()
-
+const { width } = Dimensions.get('window')
 const TaskStack = () => {
+  console.log('width', width)
   return (
     <Tab.Navigator
       initialRouteName="New"
@@ -23,9 +24,9 @@ const TaskStack = () => {
         labelStyle: styles.labelStyle,
         style: styles.styleTopMenu,
         tabStyle: { justifyContent: 'space-between', width: 'auto' },
-        contentContainerStyle: { justifyContent: 'space-between', width: 'auto' },
+        contentContainerStyle: { justifyContent: 'space-between', marginLeft: width > 413 ? 20 : 5 },
         indicatorStyle: styles.indicatorStyle,
-        // scrollEnabled: true
+        scrollEnabled: true
       }}
       screenOptions={({ route }) => ({
         tabBarLabel: ({ focused, color }) => {
@@ -61,13 +62,13 @@ const TaskStack = () => {
 
 const styles = StyleSheet.create({
   labelStyle: {
-    fontSize: 16,
+    fontSize: 15,
     textTransform: 'capitalize',
     fontFamily: Fonts.fontFamily.NunitoSansRegular,
-    color: Colors.white
+    color: Colors.white,
   },
   txtLabelActive: {
-    fontSize: 16,
+    fontSize: 15,
     textTransform: 'capitalize',
     fontFamily: Fonts.fontFamily.NunitoSansBold,
     color: Colors.orangeNeonCarrot,
@@ -79,6 +80,7 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.LightningYellow,
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
+    marginLeft: width > 413 ? 18 : 0
   },
   styleTopMenu: {
     backgroundColor: Colors.blueEgyptian,
