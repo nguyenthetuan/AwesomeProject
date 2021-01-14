@@ -10,4 +10,5 @@ export default {
   blueEgyptian: '#0E38B1', //rgb(14,56,177)
   orangeNeonCarrot: '#FF9C42', // rgb(255, 155, 66)
   redFireBrick: '#A52422',
+  LightningYellow:'#F98E2F'
 }
