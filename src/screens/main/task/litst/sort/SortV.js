@@ -22,9 +22,7 @@ const Sort = ({ data, onPressItem, indexSelect, typeSort, route, goBack }) => {
       <Header title="Sort by" leftTittle="Cancel" />
       <View style={styles.body}>
         <FlatList data={data} keyExtractor={keyExtractor} renderItem={renderItem({ onPressItem, indexSelect, typeSort, route })} />
-        <TouchableOpacity
-          onPress={goBack(indexSelect)}
-          style={styles.btnApply}>
+        <TouchableOpacity onPress={goBack(indexSelect)} style={styles.btnApply}>
           <Text style={styles.txtApply}>APPLY</Text>
         </TouchableOpacity>
       </View>

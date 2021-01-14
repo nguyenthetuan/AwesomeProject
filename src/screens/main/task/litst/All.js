@@ -4,7 +4,6 @@ import { dataTest } from './data'
 import _ from 'lodash'
 import sortBy from './unitls'
 
-
 export default pipe(
   withState('textSearch', 'setTextSearch', ''),
   withState('termData', 'updateTermData', dataTest),
@@ -18,6 +17,7 @@ export default pipe(
     }
   }),
   withHandlers({
+    onPressItem: ({ navigation }) => () => navigation.navigate('DetailTask'),
     changeText: ({ setTextSearch }) => (text) => {
       setTextSearch(text)
     },
@@ -69,7 +69,7 @@ export default pipe(
     },
   }),
   withHandlers({
-    sortBy: ({ navigation, setTypeSort, sortDataConvert, typeSort }) => () => sortBy({ navigation, setTypeSort, sortDataConvert, typeSort })
+    sortBy: ({ navigation, setTypeSort, sortDataConvert, typeSort }) => () => sortBy({ navigation, setTypeSort, sortDataConvert, typeSort }),
   }),
   lifecycle({
     componentDidMount() {

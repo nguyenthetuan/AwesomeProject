@@ -41,10 +41,8 @@ const renderStatus = (item) => {
 
 const renderItem = ({ onPressItem }) => ({ item, index }) => {
   return (
-    <TouchableOpacity
-      onPress={onPressItem}
-      style={styles.itemTask}>
-      <Image source={require('src/assets/images/itemTask.png')} style={{ width: 105, height: 86, borderRadius: 14 }} resizeMode="contain" />
+    <TouchableOpacity onPress={onPressItem} style={styles.itemTask}>
+      <Image source={require('src/assets/imagess/itemTask.png')} resizeMode="contain" />
       <View style={styles.leftItem}>
         <Text style={styles.txtTitle} numberOfLines={1}>
           {item.title}
@@ -66,7 +64,9 @@ const renderItem = ({ onPressItem }) => ({ item, index }) => {
 const footer = (dataConvert) => {
   return (
     <View style={styles.footerFlastList}>
-      <Text>Showing {dataConvert.length}/{dataConvert.length} of all item</Text>
+      <Text>
+        Showing {dataConvert.length}/{dataConvert.length} of all item
+      </Text>
     </View>
   )
 }
@@ -95,6 +95,7 @@ const ListView = ({ dataConvert, changeText, onPressItem, sortBy }) => {
           keyExtractor={keyExtractor}
           renderItem={renderItem({ onPressItem })}
           ListFooterComponent={footer(dataConvert)}
+          style={{ marginBottom: 80 }}
         />
       </View>
     </View>
@@ -155,7 +156,7 @@ const styles = StyleSheet.create({
   footerFlastList: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 30
+    marginTop: 30,
   },
   iconSearch: {
     height: 16,
@@ -171,6 +172,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 3,
     alignSelf: 'flex-start',
+    marginTop: 3,
   },
   textNewStatus: {
     fontFamily: Fonts.fontFamily.NunitoSansBold,
@@ -184,6 +186,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 3,
     alignSelf: 'flex-start',
+    marginTop: 3,
   },
   completeStatus: {
     backgroundColor: Colors.blueEgyptian,
@@ -193,6 +196,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 3,
     alignSelf: 'flex-start',
+    marginTop: 3,
   },
   txtCompleted: {
     fontFamily: Fonts.fontFamily.NunitoSansBold,
@@ -207,6 +211,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 3,
     alignSelf: 'flex-start',
+    marginTop: 3,
   },
   txtInput: {
     height: 40,

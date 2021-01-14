@@ -78,7 +78,7 @@ export default pipe(
     },
   }),
   withHandlers({
-    sortBy: ({ navigation, setTypeSort, sortDataConvert, typeSort }) => () => sortBy({ navigation, setTypeSort, sortDataConvert, typeSort })
+    sortBy: ({ navigation, setTypeSort, sortDataConvert, typeSort }) => () => sortBy({ navigation, setTypeSort, sortDataConvert, typeSort }),
   }),
   ListView,
 )

@@ -29,6 +29,7 @@ export default pipe(
     changeText: ({ setTextSearch }) => (text) => {
       setTextSearch(text)
     },
+    onPressItem: ({ navigation }) => () => navigation.navigate('DetailTask'),
     sortUp: () => (property) => {
       return (a, b) => {
         if (a[property] < b[property]) {
@@ -77,7 +78,7 @@ export default pipe(
     },
   }),
   withHandlers({
-    sortBy: ({ navigation, setTypeSort, sortDataConvert, typeSort }) => () => sortBy({ navigation, setTypeSort, sortDataConvert, typeSort })
+    sortBy: ({ navigation, setTypeSort, sortDataConvert, typeSort }) => () => sortBy({ navigation, setTypeSort, sortDataConvert, typeSort }),
   }),
   lifecycle({
     componentDidMount() {
