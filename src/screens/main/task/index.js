@@ -24,7 +24,7 @@ const TaskStack = () => {
         labelStyle: styles.labelStyle,
         style: styles.styleTopMenu,
         tabStyle: { justifyContent: 'space-between', width: 'auto' },
-        contentContainerStyle: { justifyContent: 'space-between', marginLeft: width > 413 ? 20 : 5 },
+        contentContainerStyle: { justifyContent: 'space-between', marginLeft: width > 413 ? 15 : 5 },
         indicatorStyle: styles.indicatorStyle,
         scrollEnabled: true
       }}
@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     textTransform: 'capitalize',
     fontFamily: Fonts.fontFamily.NunitoSansRegular,
     color: Colors.white,
+    paddingHorizontal: width > 413 ? 4 : 1
   },
   txtLabelActive: {
     fontSize: 15,
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.LightningYellow,
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
-    marginLeft: width > 413 ? 18 : 0
+    marginLeft: width > 413 ? 10 : 5
   },
   styleTopMenu: {
     backgroundColor: Colors.blueEgyptian,
