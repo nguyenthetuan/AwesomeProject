@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   },
   txtTitle: {
     fontFamily: Fonts.fontFamily.NunitoSansBold,
-    fontSize: 16,
+    fontSize: Fonts.fontSize[16],
     color: Colors.blueEgyptian,
     width: '50%',
   },
@@ -147,11 +147,11 @@ const styles = StyleSheet.create({
   },
   txtTime: {
     fontFamily: Fonts.fontFamily.NunitoSansSemiBold,
-    fontSize: 14,
+    fontSize: Fonts.fontSize[14],
   },
   txtDescription: {
     fontFamily: Fonts.fontFamily.NunitoSansLight,
-    fontSize: 14,
+    fontSize: Fonts.fontSize[16],
   },
   footerFlastList: {
     justifyContent: 'center',
@@ -172,11 +172,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 3,
     alignSelf: 'flex-start',
-    marginTop: 3
+    marginTop: 3,
   },
   textNewStatus: {
     fontFamily: Fonts.fontFamily.NunitoSansBold,
-    fontSize: 12,
+    fontSize: Fonts.fontSize[12],
   },
   InProgressStatus: {
     backgroundColor: Colors.whiteQuartz,
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 3,
     alignSelf: 'flex-start',
-    marginTop: 3
+    marginTop: 3,
   },
   completeStatus: {
     backgroundColor: Colors.blueEgyptian,
@@ -196,11 +196,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 3,
     alignSelf: 'flex-start',
-    marginTop: 3
+    marginTop: 3,
   },
   txtCompleted: {
     fontFamily: Fonts.fontFamily.NunitoSansBold,
-    fontSize: 12,
+    fontSize: Fonts.fontSize[12],
     color: Colors.white,
   },
   overdueStatus: {
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 3,
     alignSelf: 'flex-start',
-    marginTop: 3
+    marginTop: 3,
   },
   txtInput: {
     height: 40,

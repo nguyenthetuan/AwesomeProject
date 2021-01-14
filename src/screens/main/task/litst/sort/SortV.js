@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
   txtTitle: {
     fontFamily: Fonts.fontFamily.NunitoSansRegular,
-    fontSize: 14,
+    fontSize: Fonts.fontSize[14],
     marginLeft: 23,
   },
   btnApply: {
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   txtApply: {
     color: Colors.white,
     fontFamily: Fonts.fontFamily.NunitoSansBold,
-    fontSize: 16,
+    fontSize: Fonts.fontSize[16],
   },
 })
 
