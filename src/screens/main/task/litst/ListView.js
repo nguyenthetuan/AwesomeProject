@@ -42,7 +42,7 @@ const renderStatus = (item) => {
 const renderItem = ({ onPressItem }) => ({ item, index }) => {
   return (
     <TouchableOpacity onPress={onPressItem} style={styles.itemTask}>
-      <Image source={require('src/assets/imagess/itemTask.png')} resizeMode="contain" />
+      <Image source={require('src/assets/images/itemTask.png')} resizeMode="contain" />
       <View style={styles.leftItem}>
         <Text style={styles.txtTitle} numberOfLines={1}>
           {item.title}
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 3,
     alignSelf: 'flex-start',
-    marginTop: 3,
+    marginTop: 3
   },
   textNewStatus: {
     fontFamily: Fonts.fontFamily.NunitoSansBold,
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 3,
     alignSelf: 'flex-start',
-    marginTop: 3,
+    marginTop: 3
   },
   completeStatus: {
     backgroundColor: Colors.blueEgyptian,
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 3,
     alignSelf: 'flex-start',
-    marginTop: 3,
+    marginTop: 3
   },
   txtCompleted: {
     fontFamily: Fonts.fontFamily.NunitoSansBold,
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 3,
     alignSelf: 'flex-start',
-    marginTop: 3,
+    marginTop: 3
   },
   txtInput: {
     height: 40,
