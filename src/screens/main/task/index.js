@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Dimensions } from 'react-native'
+import { StyleSheet, Dimensions, Text } from 'react-native'
 import { pipe } from '@synvox/rehook'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import Inprogress from './litst/Inprogress'
@@ -22,33 +22,33 @@ const TaskStack = () => {
         inactiveTintColor: Colors.white,
         labelStyle: styles.labelStyle,
         style: styles.styleTopMenu,
-        tabStyle: { justifyContent: 'space-between', width: 'auto'},
-        contentContainerStyle: { justifyContent: 'center',width:'auto' },
+        tabStyle: { justifyContent: 'space-between', width: 'auto' },
+        contentContainerStyle: { justifyContent: 'space-between', width: 'auto' },
         indicatorStyle: styles.indicatorStyle,
-        scrollEnabled:true
+        // scrollEnabled: true
       }}
-      // screenOptions={({ route }) => ({
-      //   tabBarLabel: ({ focused, color }) => {
-      //     let label
-      //     switch (route.name) {
-      //       case 'New':
-      //         return (label = focused ?
-      //           <Text style={styles.txtLabelActive}>New</Text>
-      //           :
-      //           <Text style={styles.labelStyle}>New</Text>
-      //         )
-      //       case 'Inprogress':
-      //         return (label = focused ? <Text style={styles.txtLabelActive}>In Progress</Text> : <Text style={styles.labelStyle}>In Progress</Text>)
-      //       case 'Completed':
-      //         return (label = focused ? <Text style={styles.txtLabelActive}>Completed</Text> : <Text style={styles.labelStyle}>Completed</Text>)
-      //       case 'Overdue':
-      //         return (label = focused ? <Text style={styles.txtLabelActive}>Overdue</Text> : <Text style={styles.labelStyle}>Overdue</Text>)
-      //       case 'All':
-      //         return (label = focused ? <Text style={styles.txtLabelActive}>All</Text> : <Text style={styles.labelStyle}>All</Text>)
-      //     }
-      //     return label
-      //   },
-      // })}
+      screenOptions={({ route }) => ({
+        tabBarLabel: ({ focused, color }) => {
+          let label
+          switch (route.name) {
+            case 'New':
+              return (label = focused ?
+                <Text style={styles.txtLabelActive}>New</Text>
+                :
+                <Text style={styles.labelStyle}>New</Text>
+              )
+            case 'Inprogress':
+              return (label = focused ? <Text style={styles.txtLabelActive}>In Progress</Text> : <Text style={styles.labelStyle}>In Progress</Text>)
+            case 'Completed':
+              return (label = focused ? <Text style={styles.txtLabelActive}>Completed</Text> : <Text style={styles.labelStyle}>Completed</Text>)
+            case 'Overdue':
+              return (label = focused ? <Text style={styles.txtLabelActive}>Overdue</Text> : <Text style={styles.labelStyle}>Overdue</Text>)
+            case 'All':
+              return (label = focused ? <Text style={styles.txtLabelActive}>All</Text> : <Text style={styles.labelStyle}>All</Text>)
+          }
+          return label
+        },
+      })}
     >
       <Tab.Screen name="New" component={New} />
       <Tab.Screen name="Inprogress" component={Inprogress} />
@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
   labelStyle: {
     fontSize: 16,
     textTransform: 'capitalize',
-    fontFamily: Fonts.fontFamily.NunitoSansBold,
+    fontFamily: Fonts.fontFamily.NunitoSansRegular,
+    color: Colors.white
   },
   txtLabelActive: {
     fontSize: 16,
