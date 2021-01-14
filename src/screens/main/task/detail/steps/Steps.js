@@ -92,7 +92,6 @@ const Steps = ({ listStep, statusSteps, onPressStep }) => {
                 <Text style={[styles.label, styles.mt5]}>Equipment</Text>
                 <View style={styles.rowEquipment}>
                   <Image source={require('src/assets/images/qrCode.png')} style={styles.qrCode} />
-
                   <View style={styles.wrapperRightContentEquipment}>
                     <View style={styles.row}>
                       <Text style={styles.labelInEquipment}>Model:</Text>

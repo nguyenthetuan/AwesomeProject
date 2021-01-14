@@ -1,6 +1,6 @@
 import React from 'react'
-import {ThemeProvider} from 'react-native-elements'
-import {Colors, Fonts} from 'src/assets'
+import { ThemeProvider } from 'react-native-elements'
+import { Colors, Fonts } from 'src/assets'
 
 const customTheme = {
   Text: {
@@ -11,7 +11,7 @@ const customTheme = {
     },
   },
 }
-const Theme = ({children}) => {
+const Theme = ({ children }) => {
   return <ThemeProvider theme={customTheme}>{children}</ThemeProvider>
 }
 
