@@ -22,9 +22,10 @@ const TaskStack = () => {
         inactiveTintColor: Colors.white,
         labelStyle: styles.labelStyle,
         style: styles.styleTopMenu,
-        tabStyle: { justifyContent: 'space-between', width: 'auto' },
-        contentContainerStyle: { justifyContent: 'center' },
+        tabStyle: { justifyContent: 'space-between', width: 'auto'},
+        contentContainerStyle: { justifyContent: 'center',width:'auto' },
         indicatorStyle: styles.indicatorStyle,
+        scrollEnabled:true
       }}
       // screenOptions={({ route }) => ({
       //   tabBarLabel: ({ focused, color }) => {

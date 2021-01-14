@@ -95,7 +95,6 @@ const ListView = ({ dataConvert, changeText, onPressItem, sortBy }) => {
           keyExtractor={keyExtractor}
           renderItem={renderItem({ onPressItem })}
           ListFooterComponent={footer(dataConvert)}
-          style={{ marginBottom: 80 }}
         />
       </View>
     </View>
