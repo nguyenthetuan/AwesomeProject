@@ -1,6 +1,6 @@
 import React from 'react'
-import { StyleSheet, Dimensions, Text } from 'react-native'
-import { pipe } from '@synvox/rehook'
+import { StyleSheet, TouchableOpacity, View, SafeAreaView } from 'react-native'
+import { pipe, withHandlers } from '@synvox/rehook'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import Inprogress from './litst/Inprogress'
 import New from './litst/New'
@@ -8,51 +8,73 @@ import Completed from './litst/Completed'
 import Overdue from './litst/Overdue'
 import All from './litst/All'
 import { Colors, Fonts } from 'src/assets'
+import { Text } from 'react-native-elements'
+
+const styles = StyleSheet.create({
+  labelTab: {
+    fontSize: Fonts.fontSize[16],
+  },
+  wrapperCustomHeaderBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: Colors.blueEgyptian,
+    paddingTop: 42,
+  },
+  indicator: {
+    height: 2,
+    backgroundColor: Colors.orangeNeonCarrot,
+    marginTop: 15,
+  },
+})
 
 const Tab = createMaterialTopTabNavigator()
-const { width } = Dimensions.get('window')
-const TaskStack = () => {
-  console.log('width', width)
+
+const CustomTabBarV = ({ onPressItem, state }) => {
+  const tabs = ['New', 'In progress', 'Completed', 'Overdue', 'All']
   return (
-    <Tab.Navigator
-      initialRouteName="New"
-      isAutoSizeIndicator={true}
-      tabBarOptions={{
-        activeTintColor: Colors.orangeNeonCarrot,
-        allowFontScaling: true,
-        inactiveTintColor: Colors.white,
-        labelStyle: styles.labelStyle,
-        style: styles.styleTopMenu,
-        tabStyle: { justifyContent: 'space-between', width: 'auto' },
-        contentContainerStyle: { justifyContent: 'space-between', marginLeft: width > 413 ? 15 : 5 },
-        indicatorStyle: styles.indicatorStyle,
-        scrollEnabled: true
-      }}
-      screenOptions={({ route }) => ({
-        tabBarLabel: ({ focused, color }) => {
-          let label
-          switch (route.name) {
-            case 'New':
-              return (label = focused ?
-                <Text style={styles.txtLabelActive}>New</Text>
-                :
-                <Text style={styles.labelStyle}>New</Text>
-              )
-            case 'Inprogress':
-              return (label = focused ? <Text style={styles.txtLabelActive}>In Progress</Text> : <Text style={styles.labelStyle}>In Progress</Text>)
-            case 'Completed':
-              return (label = focused ? <Text style={styles.txtLabelActive}>Completed</Text> : <Text style={styles.labelStyle}>Completed</Text>)
-            case 'Overdue':
-              return (label = focused ? <Text style={styles.txtLabelActive}>Overdue</Text> : <Text style={styles.labelStyle}>Overdue</Text>)
-            case 'All':
-              return (label = focused ? <Text style={styles.txtLabelActive}>All</Text> : <Text style={styles.labelStyle}>All</Text>)
-          }
-          return label
-        },
-      })}
-    >
+    <SafeAreaView style={{ backgroundColor: Colors.blueEgyptian }}>
+      <View style={styles.wrapperCustomHeaderBar}>
+        {tabs.map((item, index) => {
+          const isActiveTab = index === state.index
+          const color = isActiveTab ? Colors.orangeNeonCarrot : Colors.white
+          return (
+            <>
+              <TouchableOpacity onPress={onPressItem(index)}>
+                <Text
+                  style={{
+                    ...styles.labelTab,
+                    color,
+                    ...(isActiveTab && { fontFamily: Fonts.fontFamily.NunitoSansBold }),
+                    ...(index === 0 && { marginLeft: 15 }),
+                    ...(index === 4 && { marginRight: 15 }),
+                  }}>
+                  {item}
+                </Text>
+                {isActiveTab && <View style={{ ...styles.indicator }} />}
+              </TouchableOpacity>
+            </>
+          )
+        })}
+      </View>
+    </SafeAreaView>
+  )
+}
+
+const tabBar = (props) => <CustomTabBarVM {...props} />
+
+const CustomTabBarVM = pipe(
+  withHandlers({
+    onPressItem: ({ navigation, state }) => (index) => () => {
+      navigation.navigate(state.routeNames[index])
+    },
+  }),
+  CustomTabBarV,
+)
+const TaskStack = () => {
+  return (
+    <Tab.Navigator initialRouteName="New" tabBar={tabBar}>
       <Tab.Screen name="New" component={New} />
-      <Tab.Screen name="Inprogress" component={Inprogress} />
+      <Tab.Screen name="In progress" component={Inprogress} />
       <Tab.Screen name="Completed" component={Completed} />
       <Tab.Screen name="Overdue" component={Overdue} />
       <Tab.Screen name="All" component={All} />
@@ -60,33 +82,4 @@ const TaskStack = () => {
   )
 }
 
-const styles = StyleSheet.create({
-  labelStyle: {
-    fontSize: 15,
-    textTransform: 'capitalize',
-    fontFamily: Fonts.fontFamily.NunitoSansRegular,
-    color: Colors.white,
-    paddingHorizontal: width > 413 ? 4 : 1
-  },
-  txtLabelActive: {
-    fontSize: 15,
-    textTransform: 'capitalize',
-    fontFamily: Fonts.fontFamily.NunitoSansBold,
-    color: Colors.orangeNeonCarrot,
-  },
-  indicatorStyle: {
-    backgroundColor: Colors.LightningYellow,
-    height: 1,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.LightningYellow,
-    borderTopRightRadius: 10,
-    borderTopLeftRadius: 10,
-    marginLeft: width > 413 ? 10 : 5
-  },
-  styleTopMenu: {
-    backgroundColor: Colors.blueEgyptian,
-    height: 80,
-    justifyContent: 'flex-end',
-  },
-})
 export default pipe(TaskStack)
