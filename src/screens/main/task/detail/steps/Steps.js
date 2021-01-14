@@ -112,7 +112,6 @@ const Steps = ({ listStep, statusSteps, onPressStep }) => {
                 </View>
               </View>
             )}
-
             <View style={styles.line} />
           </>
         )
