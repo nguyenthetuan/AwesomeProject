@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, TouchableOpacity, Image } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native'
 import { Text } from 'react-native-elements'
 import { Colors, Fonts } from 'src/assets'
 import { pipe, withState, withHandlers } from '@synvox/rehook'
@@ -69,11 +69,14 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.fontFamily.NunitoSansLight,
     marginLeft: 5,
   },
+  contentContainerStyle: {
+    paddingBottom: 30,
+  },
 })
 
 const Steps = ({ listStep, statusSteps, onPressStep }) => {
   return (
-    <View style={styles.container}>
+    <ScrollView showsVerticalScrollIndicator={false} style={styles.container} contentContainerStyle={styles.contentContainerStyle}>
       {listStep.map((item, index) => {
         return (
           <>
@@ -109,17 +112,16 @@ const Steps = ({ listStep, statusSteps, onPressStep }) => {
                 </View>
               </View>
             )}
-
             <View style={styles.line} />
           </>
         )
       })}
-    </View>
+    </ScrollView>
   )
 }
 
 export default pipe(
-  withState('listStep', 'updateListStep', [1, 2, 3]),
+  withState('listStep', 'updateListStep', [1, 2, 3, 4]),
   withState('statusSteps', 'updateStatusSteps', ({ listStep }) => {
     const arrStatus = []
     listStep.map((item) => arrStatus.push(false))
