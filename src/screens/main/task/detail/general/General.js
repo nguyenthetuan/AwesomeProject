@@ -1,8 +1,9 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import { Fonts, Colors } from 'src/assets'
 import { Text } from 'react-native-elements'
-import { pipe } from '@synvox/rehook'
+import { pipe, withHandlers, withState } from '@synvox/rehook'
+import ScanQrCode from 'src/screens/components/ScanQr'
 
 const styles = StyleSheet.create({
   container: {
@@ -26,15 +27,29 @@ const styles = StyleSheet.create({
   },
 })
 
-const General = () => {
+const General = ({ isShowQRCode, showQRCode, onQRSuccess }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>Task Name</Text>
       <Text style={styles.desc}>Task 1</Text>
       <Text style={[styles.label, styles.mt15]}>Description</Text>
       <Text style={styles.desc}>This is description for task 1</Text>
+      <TouchableOpacity onPress={showQRCode}>
+        <Text>Show qr code</Text>
+      </TouchableOpacity>
+      <ScanQrCode isVisible={isShowQRCode} onSuccess={onQRSuccess} />
     </View>
   )
 }
 
-export default pipe(General)
+export default pipe(
+  withState('isShowQRCode', 'updateShowQRCode', false),
+  withHandlers({
+    showQRCode: ({ updateShowQRCode }) => () => updateShowQRCode(true),
+    onQRSuccess: ({ updateShowQRCode }) => (res) => {
+      console.log('RES =====>', res)
+      updateShowQRCode(false)
+    },
+  }),
+  General,
+)
