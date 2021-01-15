@@ -1,9 +1,10 @@
 import React from 'react'
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, PermissionsAndroid, Platform } from 'react-native'
 import { Fonts, Colors } from 'src/assets'
 import { Text } from 'react-native-elements'
 import { pipe, withHandlers, withState } from '@synvox/rehook'
 import ScanQrCode from 'src/screens/components/ScanQr'
+import GeoLocation from 'react-native-geolocation-service'
 
 const styles = StyleSheet.create({
   container: {
@@ -45,10 +46,29 @@ const General = ({ isShowQRCode, showQRCode, onQRSuccess }) => {
 export default pipe(
   withState('isShowQRCode', 'updateShowQRCode', false),
   withHandlers({
-    showQRCode: ({ updateShowQRCode }) => () => updateShowQRCode(true),
+    showQRCode: ({ updateShowQRCode }) => async () => {
+      let check = null
+      if (Platform.OS === 'ios') {
+        check = await GeoLocation.requestAuthorization('whenInUse')
+      } else {
+        check = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION)
+      }
+      if (check === PermissionsAndroid.RESULTS.GRANTED) {
+        GeoLocation.getCurrentPosition(
+          (response) => {
+            console.log('SUCCESS', response)
+          },
+          (err) => {
+            console.log('ERROR ==>', err)
+          },
+          { forceRequestLocation: true },
+        )
+      }
+    },
     onQRSuccess: ({ updateShowQRCode }) => (res) => {
       console.log('RES =====>', res)
-      updateShowQRCode(false)
+
+      // updateShowQRCode(false)
     },
   }),
   General,
