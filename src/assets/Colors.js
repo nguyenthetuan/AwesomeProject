@@ -2,13 +2,14 @@
 export default {
   white: '#ffffff',
   whiteLilac: '#F7F7F8', //rgb(247,247,248)
-  whiteQuartz: '#CFD7EF', //rgb(207,215,239)
+  whiteQuartz: '#CFD7EF', //rgb(207,215,239) // rgb(231,235,247)
   greyZircon: '#EBECEE', // rgb(235,236,238)
   greyChateau: '#9DA2AB', //rgb(157,162,171)
   black02: '#020202', // rgb(2,2,2)
   black: '#000000',
-  blueEgyptian: '#0E38B1', //rgb(14,56,177)
+  blueEgyptian: '#0E38B1', //rgb(14,56,177),
+  blueHawkes: '#E8EBF6', //rgb(232,235,246)
   orangeNeonCarrot: '#FF9C42', // rgb(255, 155, 66)
   redFireBrick: '#A52422',
-  LightningYellow:'#F98E2F'
+  LightningYellow: '#F98E2F',
 }

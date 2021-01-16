@@ -37,7 +37,7 @@ export default pipe(
   withHandlers({
     onScanQRSuccess: ({ onSuccess }) => (res) => {
       console.log('SUCCESS ==>', res)
-      onSuccess(res)
+      onSuccess && onSuccess(res)
     },
   }),
   CameraScan,
