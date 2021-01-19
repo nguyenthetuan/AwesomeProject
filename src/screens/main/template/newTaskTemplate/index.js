@@ -8,12 +8,14 @@ import ListStep from './listStep/listepVM'
 import Header from 'src/screens/components/Header'
 
 const NewTaskTemplate = ({ initPage, changeInitPage, navigation }) => {
+  console.log('PAGE CHANGE ===>', initPage)
+  const refPager = React.useRef()
   return (
     <View style={styles.viewPager}>
       <Header title="New Task Template" leftTittle="Cancel" />
-      <ViewPager style={styles.viewPager} initialPage={initPage}>
+      <ViewPager style={styles.viewPager} initialPage={initPage} ref={refPager}>
         <View key="0">
-          <GeneralInfor changeInitPage={changeInitPage({ index: 1 })} navigation={navigation} />
+          <GeneralInfor changeInitPage={changeInitPage({ index: 1 })} navigation={navigation} refPager={refPager} />
         </View>
         <View key="1">
           <ListStep />
@@ -33,7 +35,8 @@ export default pipe(
   withState('initPage', 'setInitPage', 0),
   withHandlers({
     changeInitPage: ({ setInitPage }) => ({ index }) => () => {
-      setInitPage(index)
+      // console.log('INDEX ==>', index)
+      // setInitPage(index)
     },
   }),
   NewTaskTemplate,

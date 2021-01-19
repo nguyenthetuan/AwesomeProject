@@ -24,9 +24,11 @@ export default pipe(
     return { isValidate }
   }),
   withHandlers({
-    btnNext: ({ changeInitPage }) => () => {
-      changeInitPage()
-    }
+    btnNext: ({ changeInitPage, refPager }) => () => {
+      console.log('refPager', refPager)
+      refPager?.current?.setPage(1)
+      // changeInitPage()
+    },
   }),
   generalInforV,
 )
