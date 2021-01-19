@@ -1,6 +1,7 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import PopUpConfirm from 'src/screens/components/PopupConfirm'
+import PopupSuccess from 'src/screens/components/PopupSuccess'
 
 const Stack = createStackNavigator()
 const PopUpStack = () => {
@@ -9,6 +10,15 @@ const PopUpStack = () => {
       <Stack.Screen
         name="PopUpConfirm"
         component={PopUpConfirm}
+        options={{
+          headerShown: false,
+          cardStyle: { backgroundColor: 'transparent' },
+          cardOverlayEnabled: true,
+        }}
+      />
+      <Stack.Screen
+        name="PopUpSuccess"
+        component={PopupSuccess}
         options={{
           headerShown: false,
           cardStyle: { backgroundColor: 'transparent' },

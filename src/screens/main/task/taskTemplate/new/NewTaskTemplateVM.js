@@ -49,7 +49,6 @@ export default pipe(
       navigation.navigate('PopUpStack', {
         screen: 'PopUpConfirm',
         params: {
-          // screen: 'ModalConfirm',
           content: 'All changes will not be saved when you cancel this process',
         },
       })
