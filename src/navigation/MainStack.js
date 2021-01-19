@@ -17,6 +17,7 @@ import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom
 import { SafeAreaInsetsContext } from 'react-native-safe-area-context'
 import Template from 'src/screens/main/template/list/listVM'
 import DetailTemplate from 'src/screens/main/template/detail/detailVM'
+import NewTaskTemplate from '@src/screens/main/template/newTaskTemplate'
 
 const styles = StyleSheet.create({
   btAddNew: {
@@ -51,7 +52,6 @@ const IconProfile = Vectors.profile
 const IconAddNew = Vectors.addNew
 
 const AddNew = ({ navigation, onPressTemplate }) => {
-  console.log('navigation', navigation)
   return (
     <TouchableOpacity onPress={onPressTemplate} style={styles.btAddNew}>
       <IconAddNew />
@@ -213,6 +213,7 @@ const MainStack = ({ navigation }) => {
         <ContainerStack.Screen component={SortTaskStack} name="SortTask" options={{ headerShown: false }} />
         <ContainerStack.Screen component={Template} name="Template" options={{ headerShown: false }} />
         <ContainerStack.Screen component={DetailTemplate} name="DetailTemplate" options={{ headerShown: false }} />
+        <ContainerStack.Screen component={NewTaskTemplate} name="NewTaskTemplate" options={{ headerShown: false }} />
       </ContainerStack.Navigator>
     </NavigationContainer>
   )

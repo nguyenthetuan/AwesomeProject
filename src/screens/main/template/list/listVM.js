@@ -16,6 +16,7 @@ export default pipe(
     }
   }),
   withHandlers({
+    onPressNewTemplate: ({ navigation }) => () => navigation.navigate('NewTaskTemplate'),
     onPressItem: ({ navigation }) => () => navigation.navigate('DetailTemplate'),
     changeText: ({ setTextSearch }) => (text) => {
       setTextSearch(text)

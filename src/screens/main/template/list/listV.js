@@ -35,10 +35,10 @@ const footer = (dataConvert) => {
   )
 }
 
-const listV = ({ dataConvert, onPressItem, changeText, sortDataConvert }) => {
+const listV = ({ dataConvert, onPressItem, changeText, sortDataConvert,onPressNewTemplate }) => {
   return (
     <View style={styles.container}>
-      <Header title="Create Task" leftTittle="Cancel" rightTitle="New Template" rightOnpress={() => alert('222')} />
+      <Header title="Create Task" leftTittle="Cancel" rightTitle="New Template" rightOnpress={onPressNewTemplate} />
       <View style={styles.body}>
         <View style={styles.textInputSearch}>
           <TextInput onChangeText={changeText} style={styles.txtInput} placeholder="Enter keywords" />
