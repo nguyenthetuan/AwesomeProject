@@ -15,7 +15,7 @@ const NewTaskTemplateView = ({
   onScanQRCodeSuccess,
   onCloseQRCode,
   onChangeText,
-  step,
+  onCreateStep,
 }) => {
   return (
     <>
@@ -80,7 +80,8 @@ const NewTaskTemplateView = ({
 
             <TouchableOpacity
               style={{ ...styles.btSave, backgroundColor: isActiveBtSave ? Colors.blueEgyptian : Colors.greyChateau }}
-              disabled={!isActiveBtSave}>
+              // disabled={!isActiveBtSave}
+              onPress={onCreateStep}>
               <Text style={{ ...styles.textSave, color: isActiveBtSave ? Colors.white : Colors.greyZircon }}>SAVE</Text>
             </TouchableOpacity>
           </View>

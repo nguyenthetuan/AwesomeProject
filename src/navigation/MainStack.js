@@ -191,7 +191,7 @@ const BottomStackVM = pipe(BottomStackV)
 
 const MainStack = () => {
   return (
-    <NavigationContainer>
+    <>
       <ContainerStack.Navigator initialRouteName="BottomStack">
         <ContainerStack.Screen
           component={BottomStackVM}
@@ -204,7 +204,7 @@ const MainStack = () => {
         <ContainerStack.Screen component={SortTaskStack} name="SortTask" options={{ headerShown: false }} />
         <ContainerStack.Screen component={NewTaskTemplate} name="NewTaskTemplate" options={{ headerShown: false }} />
       </ContainerStack.Navigator>
-    </NavigationContainer>
+    </>
   )
 }
 

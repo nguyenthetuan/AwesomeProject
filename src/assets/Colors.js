@@ -7,6 +7,7 @@ export default {
   greyChateau: '#9DA2AB', //rgb(157,162,171)
   black02: '#020202', // rgb(2,2,2)
   black: '#000000',
+  blackBackgroundModal: '#00000066',
   blueEgyptian: '#0E38B1', //rgb(14,56,177),
   blueHawkes: '#E8EBF6', //rgb(232,235,246)
   orangeNeonCarrot: '#FF9C42', // rgb(255, 155, 66)
