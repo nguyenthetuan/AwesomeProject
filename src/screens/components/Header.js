@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontFamily: Fonts.fontFamily.NunitoSansSemiBold,
     fontSize: Fonts.fontSize[14],
-    alignSelf: 'flex-end'
-  }
+    alignSelf: 'flex-end',
+  },
 })
 
 const Header = ({ title, onGoBack, leftTittle, rightTitle, rightOnpress }) => {
@@ -54,14 +54,12 @@ const Header = ({ title, onGoBack, leftTittle, rightTitle, rightOnpress }) => {
         <Text style={styles.title}>{title || ''}</Text>
 
         {rightTitle ? (
-          <TouchableOpacity
-            style={{ flex: 1 }}
-            onPress={rightOnpress}>
+          <TouchableOpacity style={{ flex: 1 }} onPress={rightOnpress}>
             <Text style={styles.textRightBtn}>{rightTitle || ''}</Text>
           </TouchableOpacity>
         ) : (
-            <View style={styles.viewEmpty} />
-          )}
+          <View style={styles.viewEmpty} />
+        )}
       </View>
     </SafeAreaView>
   )

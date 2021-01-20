@@ -6,7 +6,6 @@ import { Colors, Fonts, Vectors } from 'src/assets'
 
 const IconSearch = Vectors.Search
 
-
 const renderItem = ({ onPressItem }) => ({ item, index }) => {
   return (
     <TouchableOpacity onPress={onPressItem} style={styles.itemTask}>
@@ -28,17 +27,15 @@ const keyExtractor = (item, index) => `${index}`
 const footer = (dataConvert) => {
   return (
     <View style={styles.footerFlastList}>
-      <Text style={styles.txtFooter}>
-        Scroll to Load More
-      </Text>
+      <Text style={styles.txtFooter}>Scroll to Load More</Text>
     </View>
   )
 }
 
-const listV = ({ dataConvert, onPressItem, changeText, sortDataConvert }) => {
+const listV = ({ dataConvert, onPressItem, changeText, sortDataConvert, onPressNewTemplate }) => {
   return (
     <View style={styles.container}>
-      <Header title="Create Task" leftTittle="Cancel" rightTitle="New Template" rightOnpress={() => alert('222')} />
+      <Header title="Create Task" leftTittle="Cancel" rightTitle="New Template" rightOnpress={onPressNewTemplate} />
       <View style={styles.body}>
         <View style={styles.textInputSearch}>
           <TextInput onChangeText={changeText} style={styles.txtInput} placeholder="Enter keywords" />
@@ -67,7 +64,7 @@ const listV = ({ dataConvert, onPressItem, changeText, sortDataConvert }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.white
+    backgroundColor: Colors.white,
   },
   textInputSearch: {
     backgroundColor: Colors.whiteLilac,
@@ -126,8 +123,8 @@ const styles = StyleSheet.create({
   },
   txtFooter: {
     fontFamily: Fonts.fontFamily.NunitoSansRegular,
-    fontSize: Fonts.fontSize[12]
-  }
+    fontSize: Fonts.fontSize[12],
+  },
 })
 
 export default listV

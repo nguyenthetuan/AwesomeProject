@@ -3,7 +3,6 @@ import _ from 'lodash'
 import listV from './listV'
 import { dataTest } from './data'
 
-
 export default pipe(
   withState('textSearch', 'setTextSearch', ''),
   withState('termData', 'setData', dataTest),
@@ -16,6 +15,7 @@ export default pipe(
     }
   }),
   withHandlers({
+    onPressNewTemplate: ({ navigation }) => () => navigation.navigate('NewTaskTemplate'),
     onPressItem: ({ navigation }) => () => navigation.navigate('DetailTemplate'),
     changeText: ({ setTextSearch }) => (text) => {
       setTextSearch(text)
@@ -38,5 +38,5 @@ export default pipe(
       setData(dataUp)
     },
   }),
-  listV
+  listV,
 )

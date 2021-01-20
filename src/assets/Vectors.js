@@ -8,6 +8,7 @@ import Search from './vector/search.svg'
 import Up from './vector/up.svg'
 import Down from './vector/down.svg'
 import ReadioBtn from './vector/radiActive.svg'
+import Add from './vector/add.svg'
 
 const vectors = {
   eyeOpen: EyeOpen,
@@ -20,6 +21,7 @@ const vectors = {
   up: Up,
   down: Down,
   ReadioBtn,
+  Add,
 }
 
 export default vectors
