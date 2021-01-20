@@ -25,9 +25,7 @@ export default pipe(
   }),
   withHandlers({
     btnNext: ({ changeInitPage, refPager }) => () => {
-      console.log('refPager', refPager)
       refPager?.current?.setPage(1)
-      // changeInitPage()
     },
   }),
   generalInforV,

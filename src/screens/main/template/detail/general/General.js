@@ -30,14 +30,14 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     alignContent: 'center',
     justifyContent: 'center',
-    marginBottom: 35
+    marginBottom: 35,
   },
   txtAssigment: {
     color: Colors.white,
     fontSize: Fonts.fontSize[16],
     fontFamily: Fonts.fontFamily.NunitoSansBold,
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 })
 
 const General = () => {

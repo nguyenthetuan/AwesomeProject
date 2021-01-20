@@ -13,12 +13,12 @@ const NewTaskTemplate = ({ initPage, changeInitPage, navigation }) => {
   return (
     <View style={styles.viewPager}>
       <Header title="New Task Template" leftTittle="Cancel" />
-      <ViewPager style={styles.viewPager} initialPage={initPage} ref={refPager}>
+      <ViewPager scrollEnabled={false} style={styles.viewPager} initialPage={initPage} ref={refPager}>
         <View key="0">
-          <GeneralInfor changeInitPage={changeInitPage({ index: 1 })} navigation={navigation} refPager={refPager} />
+          <GeneralInfor navigation={navigation} refPager={refPager} />
         </View>
         <View key="1">
-          <ListStep />
+          <ListStep refPager={refPager} />
         </View>
       </ViewPager>
     </View>
@@ -31,13 +31,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default pipe(
-  withState('initPage', 'setInitPage', 0),
-  withHandlers({
-    changeInitPage: ({ setInitPage }) => ({ index }) => () => {
-      // console.log('INDEX ==>', index)
-      // setInitPage(index)
-    },
-  }),
-  NewTaskTemplate,
-)
+export default pipe(withState('initPage', 'setInitPage', 0), NewTaskTemplate)

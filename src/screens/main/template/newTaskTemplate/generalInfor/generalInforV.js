@@ -2,9 +2,9 @@ import React from 'react'
 import { View, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 import { Text } from 'react-native-elements'
 import { Colors, Fonts } from 'src/assets'
+import Indicator from 'src/screens/components/Indicator'
 
 const GenneralInfor = ({ onPress, disabledBtnNext, isValidate, btnNext }) => {
-  console.log('isValidate', isValidate)
   return (
     <View style={styles.container}>
       <View style={styles.body}>
@@ -30,10 +30,12 @@ const GenneralInfor = ({ onPress, disabledBtnNext, isValidate, btnNext }) => {
           </View>
         </View>
       </View>
-      <TouchableOpacity onPress={btnNext}
-        disabled={!isValidate} style={[styles.btnNext, isValidate && { backgroundColor: Colors.blueEgyptian }]}>
-        <Text style={[styles.txtNext, isValidate && { color: Colors.white }]}>NEXT</Text>
-      </TouchableOpacity>
+      <View>
+        <Indicator header step={1} />
+        <TouchableOpacity onPress={btnNext} disabled={!isValidate} style={[styles.btnNext, isValidate && { backgroundColor: Colors.blueEgyptian }]}>
+          <Text style={[styles.txtNext, isValidate && { color: Colors.white }]}>NEXT</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
@@ -75,6 +77,7 @@ const styles = StyleSheet.create({
     marginBottom: 35,
     marginHorizontal: 15,
     borderRadius: 13,
+    marginTop: 10,
   },
   txtNext: {
     color: Colors.greyZircon,

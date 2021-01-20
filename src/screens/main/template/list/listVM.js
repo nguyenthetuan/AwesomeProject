@@ -3,7 +3,6 @@ import _ from 'lodash'
 import listV from './listV'
 import { dataTest } from './data'
 
-
 export default pipe(
   withState('textSearch', 'setTextSearch', ''),
   withState('termData', 'setData', dataTest),
@@ -39,5 +38,5 @@ export default pipe(
       setData(dataUp)
     },
   }),
-  listV
+  listV,
 )
