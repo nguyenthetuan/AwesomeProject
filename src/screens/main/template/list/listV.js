@@ -46,7 +46,7 @@ const listV = ({ dataConvert, onPressItem, changeText, sortDataConvert, onPressN
         <View style={styles.btnSort}>
           <Text>Sort by:</Text>
           <TouchableOpacity onPress={sortDataConvert}>
-            <Text style={styles.txtLatest}>Latest Start Date</Text>
+            <Text style={styles.txtLatest}>Task Name A-Z</Text>
           </TouchableOpacity>
         </View>
         <FlatList
