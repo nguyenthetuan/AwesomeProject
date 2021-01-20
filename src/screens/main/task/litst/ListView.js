@@ -75,11 +75,6 @@ const keyExtractor = (item, index) => `${index}`
 
 const ListView = ({ dataConvert, changeText, onPressItem, sortBy, onPressDemo }) => {
   return (
-    <TouchableOpacity onPress={onPressDemo} style={{alignSelf: 'center'}}>
-      <Text>Task Template</Text>
-    </TouchableOpacity>
-  )
-  return (
     <View style={styles.container}>
       <View style={styles.body}>
         <View style={styles.textInputSearch}>

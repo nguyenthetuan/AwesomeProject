@@ -9,8 +9,9 @@ import UsersStack from './UsersStack'
 import DetailTaskStack from 'src/screens/main/task/detail/DetailVM'
 import SortTaskStack from 'src/screens/main/task/litst/sort/SortVM'
 import NewTaskTemplate from 'src/screens/main/task/taskTemplate/new/NewTaskTemplateVM'
+import Login from 'src/screens/main/account/login/LoginVM'
 import { pipe } from '@synvox/rehook'
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, TouchableOpacity, View, SafeAreaView } from 'react-native'
 import { Text } from 'react-native-elements'
 import { Colors, Fonts, Vectors } from 'src/assets'
 import { createStackNavigator } from '@react-navigation/stack'
@@ -200,6 +201,7 @@ const MainStack = () => {
             headerShown: false,
           }}
         />
+        <ContainerStack.Screen component={Login} name="Login" options={{ headerShown: false }} />
         <ContainerStack.Screen component={DetailTaskStack} name="DetailTask" options={{ headerShown: false }} />
         <ContainerStack.Screen component={SortTaskStack} name="SortTask" options={{ headerShown: false }} />
         <ContainerStack.Screen component={NewTaskTemplate} name="NewTaskTemplate" options={{ headerShown: false }} />

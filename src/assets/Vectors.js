@@ -1,4 +1,4 @@
-import EyeOpen from './vector/eye-open.svg'
+import OpenEye from './vector/eye-open.svg'
 import Task from './vector/task.svg'
 import Equipment from './vector/equipment.svg'
 import Users from './vector/users.svg'
@@ -9,9 +9,10 @@ import Up from './vector/up.svg'
 import Down from './vector/down.svg'
 import ReadioBtn from './vector/radiActive.svg'
 import Success from './vector/success.svg'
+import CloseEye from './vector/iconEyeClose.svg'
 
 const vectors = {
-  eyeOpen: EyeOpen,
+  OpenEye,
   task: Task,
   profile: Profile,
   equipment: Equipment,
@@ -22,6 +23,7 @@ const vectors = {
   down: Down,
   ReadioBtn,
   Success,
+  CloseEye,
 }
 
 export default vectors
