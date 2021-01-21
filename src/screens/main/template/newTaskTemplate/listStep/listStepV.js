@@ -26,6 +26,7 @@ const renderItem = ({ onPressStep, statusSteps, steps }) => ({ item, index }) =>
           <Text style={[styles.label, styles.mt5]}>Equipment</Text>
           <View style={styles.rowEquipment}>
             <Image source={require('src/assets/images/qrCode.png')} style={styles.qrCode} />
+
             <View style={styles.wrapperRightContentEquipment}>
               <View style={styles.row}>
                 <Text style={styles.labelInEquipment}>Model:</Text>
@@ -37,7 +38,7 @@ const renderItem = ({ onPressStep, statusSteps, steps }) => ({ item, index }) =>
               </View>
               <View style={styles.row}>
                 <Text style={styles.labelInEquipment}>Description:</Text>
-                <Text style={styles.desInEquipment}>{item?.EquiqmentInfo?.Description}</Text>
+                <Text style={{ ...styles.desInEquipment }}>{item?.EquiqmentInfo?.Description}</Text>
               </View>
             </View>
           </View>

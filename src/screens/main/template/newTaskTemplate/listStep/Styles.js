@@ -117,9 +117,13 @@ const styles = StyleSheet.create({
     height: 60,
   },
   wrapperRightContentEquipment: {
-    marginLeft: 10,
+    width: '90%',
+    paddingLeft: 10,
+    paddingRight: 15,
+    flexWrap: 'wrap',
   },
   row: {
+    flexWrap: 'wrap',
     flexDirection: 'row',
   },
   labelInEquipment: {
@@ -128,6 +132,7 @@ const styles = StyleSheet.create({
   desInEquipment: {
     fontFamily: Fonts.fontFamily.NunitoSansLight,
     marginLeft: 5,
+    paddingRight: 15,
   },
   line: {
     borderBottomColor: Colors.greyZircon,

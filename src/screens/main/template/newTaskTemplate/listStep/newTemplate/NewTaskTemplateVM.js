@@ -1,27 +1,12 @@
-import { pipe, withHandlers, withState, withProps, lifecycle } from '@synvox/rehook'
+import { pipe, withHandlers, withState, withProps } from '@synvox/rehook'
 import { Platform, PermissionsAndroid } from 'react-native'
 import GeoLocation from 'react-native-geolocation-service'
 import NewTaskTemplate from './NewTaskTemplateV'
-import _ from 'lodash'
-
-let step = {
-  Instruction: '',
-  Description: '',
-  EquiqmentInfo: {
-    // ID: '',
-    Description: '',
-    Model: '',
-    SerialNumber: '',
-    // QR: '',
-  },
-  err: { Instruction: true, Description: true, descEquipment: true, modelEquipment: true, serialNo: true },
-}
 
 export default pipe(
   withProps(({ route }) => ({ currentStep: route?.params?.currentStep })),
   withState('isVisibleQRCode', 'updateVisibleQRCode', false),
   withState('geoLocation', 'updateGeoLocation', {}),
-  withState('isActiveBtSave', 'updateActiveBtSave', false),
   withHandlers({
     getGeoLocation: ({ updateGeoLocation }) => async () => {
       let check = null
@@ -56,14 +41,13 @@ export default pipe(
         },
       })
     },
-    onCreateStep: ({ navigation, route }) => () => {
+    onCreateStep: ({ navigation, route }) => (refForm) => () => {
       navigation.navigate('PopUpStack', {
         screen: 'PopUpConfirm',
         params: {
           content: 'Do you want to save this process',
           onPressConfirm: () => {
-            delete step.err
-            route?.params?.callbackAddStep(step)
+            route?.params?.callbackAddStep(refForm?.current?.values)
             navigation.goBack()
           },
         },
@@ -76,62 +60,17 @@ export default pipe(
     onCloseQRCode: ({ updateVisibleQRCode }) => () => {
       updateVisibleQRCode(false)
     },
-    onScanQRCodeSuccess: ({ updateVisibleQRCode }) => (res) => {
-      console.log('SUCCESS dmcmcmcc===>', res)
+    onScanQRCodeSuccess: ({ updateVisibleQRCode }) => (refForm) => (res) => {
+      const { values, setValues } = refForm.current
       updateVisibleQRCode(false)
-      step.EquiqmentInfo.Description = 'Description of Equipment'
-      step.err.descEquipment = false
-      step.EquiqmentInfo.Model = 'KIF-123'
-      step.err.modelEquipment = false
-      step.EquiqmentInfo.SerialNumber = '88883213'
-      step.err.serialNo = false
-    },
-    onChangeText: ({ isActiveBtSave, updateActiveBtSave }) => (key) => (text) => {
-      step.err[key] = text ? false : true
-      switch (key) {
-        case 'descEquipment':
-          step.EquiqmentInfo.Description = text
-          break
-        case 'modelEquipment':
-          step.EquiqmentInfo.Model = text
-          break
-        case 'serialNo':
-          step.EquiqmentInfo.SerialNumber = text
-          break
-        default:
-          step[key] = text
-          break
-      }
-      let isActive = false
-      _.forIn(step.err, (value) => {
-        if (value) {
-          return (isActive = false)
-        }
-        isActive = true
-      })
-      if (!isActive && isActiveBtSave) {
-        updateActiveBtSave(false)
-      }
-      if (isActive && !isActiveBtSave) {
-        updateActiveBtSave(true)
-      }
-    },
-  }),
-  lifecycle({
-    componentDidMount() {},
-    componentWillUnmount() {
-      step = {
-        Instruction: '',
-        Description: '',
+      setValues({
+        ...values,
         EquiqmentInfo: {
-          // ID: '',
-          Description: '',
-          Model: '',
-          SerialNumber: '',
-          // QR: '',
+          Description: 'This is Description of step after scan QRCode',
+          Model: 'Demo-1102',
+          SerialNumber: '1234ABC',
         },
-        err: { Instruction: true, Description: true, descEquipment: true, modelEquipment: true, serialNo: true },
-      }
+      })
     },
   }),
   NewTaskTemplate,
