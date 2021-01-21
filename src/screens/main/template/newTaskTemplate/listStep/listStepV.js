@@ -15,13 +15,13 @@ const renderItem = ({ onPressStep, statusSteps, steps }) => ({ item, index }) =>
   return (
     <View>
       <TouchableOpacity style={[styles.btStep]} key={`${index}`} onPress={onPressStep(index)}>
-        <Text style={styles.nameStep}>{`Step ${index + 1}: ${item?.Instruction}`}</Text>
+        <Text style={styles.nameStep}>{`Step ${index + 1}: ${item?.Description}`}</Text>
         {statusSteps[index] ? <Up /> : <Down />}
       </TouchableOpacity>
       {statusSteps[index] && (
         <View style={styles.wrapperContentStep}>
           <Text style={styles.label}>Instruction</Text>
-          <Text style={styles.desc}> {item?.Description} </Text>
+          <Text style={styles.desc}> {item?.Instruction} </Text>
 
           <Text style={[styles.label, styles.mt5]}>Equipment</Text>
           <View style={styles.rowEquipment}>
