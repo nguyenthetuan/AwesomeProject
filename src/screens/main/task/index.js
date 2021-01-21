@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, TouchableOpacity, View, SafeAreaView } from 'react-native'
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import { pipe, withHandlers } from '@synvox/rehook'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import Inprogress from './litst/Inprogress'
@@ -9,6 +9,7 @@ import Overdue from './litst/Overdue'
 import All from './litst/All'
 import { Colors, Fonts } from 'src/assets'
 import { Text } from 'react-native-elements'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 const styles = StyleSheet.create({
   labelTab: {
@@ -31,32 +32,29 @@ const Tab = createMaterialTopTabNavigator()
 
 const CustomTabBarV = ({ onPressItem, state }) => {
   const tabs = ['New', 'In progress', 'Completed', 'Overdue', 'All']
+  const insets = useSafeAreaInsets()
   return (
-    <SafeAreaView style={{ backgroundColor: Colors.blueEgyptian }}>
-      <View style={styles.wrapperCustomHeaderBar}>
-        {tabs.map((item, index) => {
-          const isActiveTab = index === state.index
-          const color = isActiveTab ? Colors.orangeNeonCarrot : Colors.white
-          return (
-            <>
-              <TouchableOpacity onPress={onPressItem(index)}>
-                <Text
-                  style={{
-                    ...styles.labelTab,
-                    color,
-                    ...(isActiveTab && { fontFamily: Fonts.fontFamily.NunitoSansBold }),
-                    ...(index === 0 && { marginLeft: 15 }),
-                    ...(index === 4 && { marginRight: 15 }),
-                  }}>
-                  {item}
-                </Text>
-                {isActiveTab && <View style={{ ...styles.indicator }} />}
-              </TouchableOpacity>
-            </>
-          )
-        })}
-      </View>
-    </SafeAreaView>
+    <View style={{ ...styles.wrapperCustomHeaderBar, paddingTop: insets.top + 24 }}>
+      {tabs.map((item, index) => {
+        const isActiveTab = index === state.index
+        const color = isActiveTab ? Colors.orangeNeonCarrot : Colors.white
+        return (
+          <TouchableOpacity onPress={onPressItem(index)} key={index}>
+            <Text
+              style={{
+                ...styles.labelTab,
+                color,
+                ...(isActiveTab && { fontFamily: Fonts.fontFamily.NunitoSansBold }),
+                ...(index === 0 && { marginLeft: 15 }),
+                ...(index === 4 && { marginRight: 15 }),
+              }}>
+              {item}
+            </Text>
+            {isActiveTab && <View style={{ ...styles.indicator }} />}
+          </TouchableOpacity>
+        )
+      })}
+    </View>
   )
 }
 

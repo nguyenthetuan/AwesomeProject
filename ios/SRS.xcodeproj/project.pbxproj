@@ -58,22 +58,22 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SRS/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SRS/main.m; sourceTree = "<group>"; };
 		268A1DA8174FE9BA12FEDBFB /* Pods-SRS-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRS-tvOS.release.xcconfig"; path = "Target Support Files/Pods-SRS-tvOS/Pods-SRS-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		281CADDE35C049FCBBDE6ABA /* NunitoSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NunitoSans-Regular.ttf"; path = "../src/assets/fonts/NunitoSans-Regular.ttf"; sourceTree = "<group>"; };
+		281CADDE35C049FCBBDE6ABA /* NunitoSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NunitoSans-Regular.ttf"; path = "../src/assets/fonts/NunitoSans-Regular.ttf"; sourceTree = "<group>"; };
 		2D00532BC589393571B35E55 /* Pods-SRS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRS.release.xcconfig"; path = "Target Support Files/Pods-SRS/Pods-SRS.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* SRS-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SRS-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* SRS-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SRS-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3184FC1F5CCDBA7286C4FB22 /* Pods-SRS-SRSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRS-SRSTests.release.xcconfig"; path = "Target Support Files/Pods-SRS-SRSTests/Pods-SRS-SRSTests.release.xcconfig"; sourceTree = "<group>"; };
 		4039E2A5B149F51D0C0D1496 /* libPods-SRS-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SRS-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4687FA96ADC75030AD4E3EA2 /* libPods-SRS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SRS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F3A25F0348D4BA4A2C2DA0E /* NunitoSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NunitoSans-SemiBold.ttf"; path = "../src/assets/fonts/NunitoSans-SemiBold.ttf"; sourceTree = "<group>"; };
-		5F513614531D48018DB9142E /* NunitoSans-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NunitoSans-Italic.ttf"; path = "../src/assets/fonts/NunitoSans-Italic.ttf"; sourceTree = "<group>"; };
-		7475FC620B4B434CB3A688ED /* NunitoSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NunitoSans-Light.ttf"; path = "../src/assets/fonts/NunitoSans-Light.ttf"; sourceTree = "<group>"; };
+		5F3A25F0348D4BA4A2C2DA0E /* NunitoSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NunitoSans-SemiBold.ttf"; path = "../src/assets/fonts/NunitoSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		5F513614531D48018DB9142E /* NunitoSans-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NunitoSans-Italic.ttf"; path = "../src/assets/fonts/NunitoSans-Italic.ttf"; sourceTree = "<group>"; };
+		7475FC620B4B434CB3A688ED /* NunitoSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NunitoSans-Light.ttf"; path = "../src/assets/fonts/NunitoSans-Light.ttf"; sourceTree = "<group>"; };
 		77734AE9E0ED4A5D807520AD /* Pods-SRS-SRSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRS-SRSTests.debug.xcconfig"; path = "Target Support Files/Pods-SRS-SRSTests/Pods-SRS-SRSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F2D4C8E0912B73D41F83785 /* Pods-SRS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRS.debug.xcconfig"; path = "Target Support Files/Pods-SRS/Pods-SRS.debug.xcconfig"; sourceTree = "<group>"; };
 		9FC2CB48B65396D7074C89A9 /* Pods-SRS-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRS-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-SRS-tvOS/Pods-SRS-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		A220681E10D24C08B808001B /* NunitoSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NunitoSans-ExtraBold.ttf"; path = "../src/assets/fonts/NunitoSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		A220681E10D24C08B808001B /* NunitoSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NunitoSans-ExtraBold.ttf"; path = "../src/assets/fonts/NunitoSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		A4A6BE183C249FF111C9CD27 /* Pods-SRS-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRS-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-SRS-tvOSTests/Pods-SRS-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		A6A89054454A41A291F603FE /* NunitoSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "NunitoSans-Bold.ttf"; path = "../src/assets/fonts/NunitoSans-Bold.ttf"; sourceTree = "<group>"; };
+		A6A89054454A41A291F603FE /* NunitoSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NunitoSans-Bold.ttf"; path = "../src/assets/fonts/NunitoSans-Bold.ttf"; sourceTree = "<group>"; };
 		C5757913EDEA425AA812F66F /* Pods-SRS-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRS-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-SRS-tvOSTests/Pods-SRS-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E8CAD06578F76F8F7F6F38A8 /* libPods-SRS-SRSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SRS-SRSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -207,7 +207,6 @@
 				C5757913EDEA425AA812F66F /* Pods-SRS-tvOSTests.debug.xcconfig */,
 				A4A6BE183C249FF111C9CD27 /* Pods-SRS-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -222,7 +221,6 @@
 				5F3A25F0348D4BA4A2C2DA0E /* NunitoSans-SemiBold.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +319,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 5TWY2A9WQN;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -761,6 +760,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5TWY2A9WQN;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -788,6 +788,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5TWY2A9WQN;
 				INFOPLIST_FILE = SRS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (

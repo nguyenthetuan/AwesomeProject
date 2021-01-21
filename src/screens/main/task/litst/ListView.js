@@ -73,7 +73,7 @@ const footer = (dataConvert) => {
 
 const keyExtractor = (item, index) => `${index}`
 
-const ListView = ({ dataConvert, changeText, onPressItem, sortBy }) => {
+const ListView = ({ dataConvert, changeText, onPressItem, sortBy, onPressDemo }) => {
   return (
     <View style={styles.container}>
       <View style={styles.body}>

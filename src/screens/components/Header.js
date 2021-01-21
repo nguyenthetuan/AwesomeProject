@@ -67,9 +67,14 @@ const Header = ({ title, onGoBack, leftTittle, rightTitle, rightOnpress }) => {
 
 export default pipe(
   withNavigationContext,
-  withProps(({ title, leftTittle }) => ({ title, leftTittle })),
+  withProps(({ title, leftTittle, onGoBack }) => ({ title, leftTittle, onGoBack })),
   withHandlers({
-    onGoBack: ({ navigation }) => () => navigation.goBack(),
+    onGoBack: ({ navigation, onGoBack }) => () => {
+      if (onGoBack) {
+        return onGoBack()
+      }
+      navigation.goBack()
+    },
   }),
   Header,
 )
