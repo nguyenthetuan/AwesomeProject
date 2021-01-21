@@ -17,7 +17,7 @@ const PopUpStack = () => {
         }}
       />
       <Stack.Screen
-        name="PopUpSuccess"
+        name="PopupSuccess"
         component={PopupSuccess}
         options={{
           headerShown: false,

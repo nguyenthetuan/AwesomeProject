@@ -3,6 +3,7 @@ export default {
   white: '#ffffff',
   whiteLilac: '#F7F7F8', //rgb(247,247,248)
   whiteQuartz: '#CFD7EF', //rgb(207,215,239) // rgb(231,235,247)
+  whiteQuartzTwo: '#E7EBF7',
   greyZircon: '#EBECEE', // rgb(235,236,238)
   greyChateau: '#9DA2AB', //rgb(157,162,171)
   black02: '#020202', // rgb(2,2,2)

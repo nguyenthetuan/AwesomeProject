@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: Colors.white,
     fontSize: Fonts.fontSize[16],
-    marginBottom: 5,
+    marginBottom: 15,
   },
   btClose: {
     borderRadius: 13,
@@ -60,10 +60,14 @@ export default pipe(
     return {
       title: route?.params?.title,
       content: route?.params?.content,
+      callbackFunc: route?.params?.callbackFunc,
     }
   }),
   withHandlers({
-    onClose: ({ navigation }) => () => navigation.goBack(),
+    onClose: ({ navigation, callbackFunc }) => () => {
+      navigation.goBack()
+      callbackFunc && callbackFunc()
+    },
   }),
   PopupSuccess,
 )

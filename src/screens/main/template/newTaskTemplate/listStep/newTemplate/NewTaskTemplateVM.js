@@ -1,10 +1,10 @@
-import { pipe, withHandlers, withState, withProps } from '@synvox/rehook'
+import { pipe, withHandlers, withState, withProps, lifecycle } from '@synvox/rehook'
 import { Platform, PermissionsAndroid } from 'react-native'
 import GeoLocation from 'react-native-geolocation-service'
 import NewTaskTemplate from './NewTaskTemplateV'
 import _ from 'lodash'
 
-const step = {
+let step = {
   Instruction: '',
   Description: '',
   EquiqmentInfo: {
@@ -18,7 +18,7 @@ const step = {
 }
 
 export default pipe(
-  withProps(({ numberStep }) => ({ numberStep: 1 })),
+  withProps(({ route }) => ({ currentStep: route?.params?.currentStep })),
   withState('isVisibleQRCode', 'updateVisibleQRCode', false),
   withState('geoLocation', 'updateGeoLocation', {}),
   withState('isActiveBtSave', 'updateActiveBtSave', false),
@@ -33,11 +33,11 @@ export default pipe(
       if (check === PermissionsAndroid.RESULTS.GRANTED) {
         GeoLocation.getCurrentPosition(
           (response) => {
-            console.log('SUCCESS', response)
+            // console.log('SUCCESS', response)
             updateGeoLocation({ latitude: response?.coords.latitude, longitude: response?.coords?.longitude })
           },
           (err) => {
-            console.log('ERROR ==>', err)
+            //
           },
           { forceRequestLocation: true },
         )
@@ -45,11 +45,27 @@ export default pipe(
     },
   }),
   withHandlers({
-    onCreateStep: ({ navigation }) => () => {
+    onConfirmGoBack: ({ navigation }) => () => {
       navigation.navigate('PopUpStack', {
         screen: 'PopUpConfirm',
         params: {
           content: 'All changes will not be saved when you cancel this process',
+          onPressConfirm: () => {
+            navigation.goBack()
+          },
+        },
+      })
+    },
+    onCreateStep: ({ navigation, route }) => () => {
+      navigation.navigate('PopUpStack', {
+        screen: 'PopUpConfirm',
+        params: {
+          content: 'Do you want to save this process',
+          onPressConfirm: () => {
+            delete step.err
+            route?.params?.callbackAddStep(step)
+            navigation.goBack()
+          },
         },
       })
     },
@@ -61,7 +77,7 @@ export default pipe(
       updateVisibleQRCode(false)
     },
     onScanQRCodeSuccess: ({ updateVisibleQRCode }) => (res) => {
-      console.log('RES ===>', res)
+      console.log('SUCCESS dmcmcmcc===>', res)
       updateVisibleQRCode(false)
       step.EquiqmentInfo.Description = 'Description of Equipment'
       step.err.descEquipment = false
@@ -71,7 +87,6 @@ export default pipe(
       step.err.serialNo = false
     },
     onChangeText: ({ isActiveBtSave, updateActiveBtSave }) => (key) => (text) => {
-      console.log('INPUT ===>', { key, text })
       step.err[key] = text ? false : true
       switch (key) {
         case 'descEquipment':
@@ -99,6 +114,23 @@ export default pipe(
       }
       if (isActive && !isActiveBtSave) {
         updateActiveBtSave(true)
+      }
+    },
+  }),
+  lifecycle({
+    componentDidMount() {},
+    componentWillUnmount() {
+      step = {
+        Instruction: '',
+        Description: '',
+        EquiqmentInfo: {
+          // ID: '',
+          Description: '',
+          Model: '',
+          SerialNumber: '',
+          // QR: '',
+        },
+        err: { Instruction: true, Description: true, descEquipment: true, modelEquipment: true, serialNo: true },
       }
     },
   }),

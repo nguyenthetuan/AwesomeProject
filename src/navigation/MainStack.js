@@ -1,22 +1,24 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/jsx-no-bind */
 import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
 import TaskStack from './TaskStack'
 import EquipmentStack from './EquipmentStack'
 import ProfileStack from './ProfileStack'
 import UsersStack from './UsersStack'
 import DetailTaskStack from 'src/screens/main/task/detail/DetailVM'
 import SortTaskStack from 'src/screens/main/task/litst/sort/SortVM'
-import NewTaskTemplate from 'src/screens/main/task/taskTemplate/new/NewTaskTemplateVM'
 import Login from 'src/screens/main/account/login/LoginVM'
-import { pipe } from '@synvox/rehook'
-import { StyleSheet, TouchableOpacity, View, SafeAreaView } from 'react-native'
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import { pipe, withHandlers } from '@synvox/rehook'
 import { Text } from 'react-native-elements'
 import { Colors, Fonts, Vectors } from 'src/assets'
 import { createStackNavigator } from '@react-navigation/stack'
 import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { SafeAreaInsetsContext } from 'react-native-safe-area-context'
+import Template from 'src/screens/main/template/list/listVM'
+import DetailTemplate from 'src/screens/main/template/detail/detailVM'
+import NewTaskTemplate from '@src/screens/main/template/newTaskTemplate'
+import CreatStepTaskTemplate from 'src/screens/main/template/newTaskTemplate/listStep/newTemplate/NewTaskTemplateVM'
 
 const styles = StyleSheet.create({
   btAddNew: {
@@ -50,9 +52,9 @@ const IconEquipment = Vectors.equipment
 const IconProfile = Vectors.profile
 const IconAddNew = Vectors.addNew
 
-const AddNew = () => {
+const AddNew = ({ navigation, onPressTemplate }) => {
   return (
-    <TouchableOpacity style={styles.btAddNew}>
+    <TouchableOpacity onPress={onPressTemplate} style={styles.btAddNew}>
       <IconAddNew />
     </TouchableOpacity>
   )
@@ -68,7 +70,7 @@ const AddNewNull = () => {
   return null
 }
 
-const BottomStackV = () => {
+const BottomStackV = ({ navigation, onPressTemplate }) => {
   return (
     <BottomTab.Navigator
       initialRouteName="TaskStack"
@@ -137,7 +139,9 @@ const BottomStackV = () => {
         component={AddNewNull}
         name="AddNew"
         options={{
-          tabBarButton: () => <AddNew />,
+          tabBarButton: (props) => {
+            return <AddNew navigation={navigation} onPressTemplate={onPressTemplate} />
+          },
         }}
       />
 
@@ -188,12 +192,17 @@ const BottomStackV = () => {
   )
 }
 
-const BottomStackVM = pipe(BottomStackV)
+const BottomStackVM = pipe(
+  withHandlers({
+    onPressTemplate: ({ navigation }) => () => navigation.navigate('Template'),
+  }),
+  BottomStackV,
+)
 
-const MainStack = () => {
+const MainStack = ({ navigation }) => {
   return (
     <>
-      <ContainerStack.Navigator initialRouteName="BottomStack">
+      <ContainerStack.Navigator initialRouteName="Login">
         <ContainerStack.Screen
           component={BottomStackVM}
           name="BottomStack"
@@ -204,7 +213,10 @@ const MainStack = () => {
         <ContainerStack.Screen component={Login} name="Login" options={{ headerShown: false }} />
         <ContainerStack.Screen component={DetailTaskStack} name="DetailTask" options={{ headerShown: false }} />
         <ContainerStack.Screen component={SortTaskStack} name="SortTask" options={{ headerShown: false }} />
+        <ContainerStack.Screen component={Template} name="Template" options={{ headerShown: false }} />
+        <ContainerStack.Screen component={DetailTemplate} name="DetailTemplate" options={{ headerShown: false }} />
         <ContainerStack.Screen component={NewTaskTemplate} name="NewTaskTemplate" options={{ headerShown: false }} />
+        <ContainerStack.Screen component={CreatStepTaskTemplate} name="CreatStepTaskTemplate" options={{ headerShown: false }} />
       </ContainerStack.Navigator>
     </>
   )

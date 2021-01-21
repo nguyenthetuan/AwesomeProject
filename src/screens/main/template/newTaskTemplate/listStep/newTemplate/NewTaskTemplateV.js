@@ -5,21 +5,26 @@ import { Colors } from 'src/assets'
 import Header from 'src/screens/components/Header'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import ScanQr from 'src/screens/components/ScanQr'
-import styles from './styles'
+import styles from './Styles'
 
 const NewTaskTemplateView = ({
   isActiveBtSave,
-  numberStep,
+  currentStep,
   onPressScanQRCode,
   isVisibleQRCode,
   onScanQRCodeSuccess,
   onCloseQRCode,
   onChangeText,
   onCreateStep,
+  onConfirmGoBack,
 }) => {
   return (
     <>
-      <Header title={isVisibleQRCode ? 'Scan QR Code' : `Step ${numberStep}`} leftTittle="Cancel" onGoBack={isVisibleQRCode ? onCloseQRCode : null} />
+      <Header
+        title={isVisibleQRCode ? 'Scan QR Code' : `Step ${currentStep}`}
+        leftTittle="Cancel"
+        onGoBack={isVisibleQRCode ? onCloseQRCode : onConfirmGoBack}
+      />
       <KeyboardAwareScrollView style={styles.container} extraScrollHeight={20}>
         <View style={styles.wrapperContent}>
           <View style={styles.rowLabel}>
