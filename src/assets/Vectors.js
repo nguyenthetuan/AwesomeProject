@@ -12,6 +12,7 @@ import Success from './vector/success.svg'
 import CloseEye from './vector/iconEyeClose.svg'
 import Add from './vector/add.svg'
 import CropCamera from './vector/cropCamera.svg'
+import Information from './vector/information.svg'
 
 const vectors = {
   OpenEye,
@@ -28,6 +29,7 @@ const vectors = {
   CloseEye,
   Add,
   CropCamera,
+  Information,
 }
 
 export default vectors

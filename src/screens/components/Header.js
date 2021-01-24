@@ -48,7 +48,7 @@ const Header = ({ title, onGoBack, leftTittle, rightTitle, rightOnpress }) => {
     <SafeAreaView style={styles.safeAreaView}>
       <View style={styles.wrapperHeader}>
         <TouchableOpacity style={styles.btBack} onPress={onGoBack}>
-          <Text style={styles.textBack}>{leftTittle || ''}</Text>
+          <Text style={styles.textBack}>{leftTittle || 'Back'}</Text>
         </TouchableOpacity>
 
         <Text style={styles.title}>{title || ''}</Text>

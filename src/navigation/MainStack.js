@@ -19,6 +19,7 @@ import Template from 'src/screens/main/template/list/listVM'
 import DetailTemplate from 'src/screens/main/template/detail/detailVM'
 import NewTaskTemplate from '@src/screens/main/template/newTaskTemplate'
 import CreatStepTaskTemplate from 'src/screens/main/template/newTaskTemplate/listStep/newTemplate/NewTaskTemplateVM'
+import CreateUser from 'src/screens/main/template/assignUser/CreateUser'
 
 const styles = StyleSheet.create({
   btAddNew: {
@@ -194,6 +195,7 @@ const BottomStackV = ({ navigation, onPressTemplate }) => {
 
 const BottomStackVM = pipe(
   withHandlers({
+    // onPressTemplate: ({ navigation }) => () => navigation.navigate('CreateUser'),
     onPressTemplate: ({ navigation }) => () => navigation.navigate('Template'),
   }),
   BottomStackV,
@@ -202,7 +204,7 @@ const BottomStackVM = pipe(
 const MainStack = ({ navigation }) => {
   return (
     <>
-      <ContainerStack.Navigator initialRouteName="Login">
+      <ContainerStack.Navigator initialRouteName="BottomStack">
         <ContainerStack.Screen
           component={BottomStackVM}
           name="BottomStack"
@@ -217,6 +219,7 @@ const MainStack = ({ navigation }) => {
         <ContainerStack.Screen component={DetailTemplate} name="DetailTemplate" options={{ headerShown: false }} />
         <ContainerStack.Screen component={NewTaskTemplate} name="NewTaskTemplate" options={{ headerShown: false }} />
         <ContainerStack.Screen component={CreatStepTaskTemplate} name="CreatStepTaskTemplate" options={{ headerShown: false }} />
+        <ContainerStack.Screen component={CreateUser} name="CreateUser" options={{ headerShown: false }} />
       </ContainerStack.Navigator>
     </>
   )
