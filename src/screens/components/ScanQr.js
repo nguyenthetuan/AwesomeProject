@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, Dimensions } from 'react-native'
-import { pipe, withHandlers } from '@synvox/rehook'
+import { pipe, withHandlers, withState } from '@synvox/rehook'
 import QRCodeScanner from 'react-native-qrcode-scanner'
 import { Vectors } from 'src/assets'
 
@@ -31,22 +31,33 @@ const styles = StyleSheet.create({
   },
 })
 
-const CameraScan = ({ isVisible, onScanQRSuccess }) => {
+const CameraScan = ({ isVisible, onScanQRSuccess, onCameraReady, showCrop }) => {
   if (!isVisible) {
     return null
   }
   return (
     <View style={styles.container}>
-      <View style={styles.wrapperCropCamera}>
-        <CropCamera />
-      </View>
-      <QRCodeScanner cameraStyle={styles.cameraStyle} onRead={onScanQRSuccess} containerStyle={styles.containerStyle} />
+      {showCrop && (
+        <View style={styles.wrapperCropCamera}>
+          <CropCamera />
+        </View>
+      )}
+      <QRCodeScanner
+        cameraStyle={styles.cameraStyle}
+        onRead={onScanQRSuccess}
+        containerStyle={styles.containerStyle}
+        cameraProps={{ onCameraReady: onCameraReady }}
+      />
     </View>
   )
 }
 
 export default pipe(
+  withState('showCrop', 'updateShowCrop', false),
   withHandlers({
+    onCameraReady: ({ updateShowCrop }) => () => {
+      setTimeout(() => updateShowCrop(true), 1500)
+    },
     onScanQRSuccess: ({ onSuccess }) => (res) => {
       onSuccess && onSuccess(res)
     },
