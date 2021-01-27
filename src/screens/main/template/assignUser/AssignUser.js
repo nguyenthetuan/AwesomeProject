@@ -18,7 +18,6 @@ import Header from 'src/screens/components/Header'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import moment from 'moment'
 import Indicator from 'src/screens/components/Indicator'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 const { width } = Dimensions.get('window')
 let data = [
@@ -62,7 +61,7 @@ const styles = StyleSheet.create({
   },
   iconAdduser: {
     position: 'absolute',
-    right: 10,
+    right: 5,
     top: 16,
     marginRight: 10,
     justifyContent: 'center',
@@ -202,12 +201,13 @@ const assignUser = ({
   handleDatePickedEnd,
   isValidate,
   onFinishCreateSteps,
+  btnPrevious
 }) => {
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
       <View style={styles.container}>
         <Header title="New Assignment" leftTittle="Cancel" />
-        <TouchableWithoutFeedback style={styles.container} onPress={() => {}}>
+        <TouchableWithoutFeedback style={styles.container} onPress={() => { }}>
           <View style={styles.RowAdduser}>
             <TouchableWithoutFeedback style={{ zIndex: 99 }}>
               <View>
@@ -263,10 +263,14 @@ const assignUser = ({
             <View style={styles.footer}>
               <Indicator footer step={1} />
               <View style={styles.btnFooter}>
-                <TouchableOpacity style={styles.btnPrevioud}>
+                <TouchableOpacity
+                  onPress={btnPrevious}
+                  style={styles.btnPrevioud}>
                   <Text style={styles.txtPrevious}>PREVIOUS</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={onFinishCreateSteps} style={[styles.btnFinish, isValidate && { backgroundColor: Colors.blueEgyptian }]}>
+                <TouchableOpacity
+                  disabled={!isValidate}
+                  onPress={onFinishCreateSteps} style={[styles.btnFinish, isValidate && { backgroundColor: Colors.blueEgyptian }]}>
                   <Text style={styles.txtFinish}>FINISH</Text>
                 </TouchableOpacity>
               </View>
@@ -346,6 +350,9 @@ export default pipe(
         screen: 'PopupSuccess',
         params: { content: 'New assignment has been made. You can view it in the Task list.', callbackFunc: () => navigation.goBack() },
       }),
+    btnPrevious: ({ navigation }) => () => {
+      navigation.goBack()
+    }
   }),
   withProps(({ textSearch, startDate, endDate }) => {
     const isValidate = textSearch !== '' && startDate !== '' && endDate !== ''
