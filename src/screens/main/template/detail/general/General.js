@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import { Fonts, Colors } from 'src/assets'
 import { Text } from 'react-native-elements'
-import { pipe } from '@synvox/rehook'
+import { pipe, withHandlers } from '@synvox/rehook'
 
 const styles = StyleSheet.create({
   container: {
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const General = () => {
+const General = ({ assignment }) => {
   return (
     <View style={styles.container}>
       <View style={{ flex: 1 }}>
@@ -49,11 +49,18 @@ const General = () => {
         <Text style={[styles.label, styles.mt15]}>Description</Text>
         <Text style={styles.desc}>This is description for task 1</Text>
       </View>
-      <TouchableOpacity style={styles.btnAssigment}>
+      <TouchableOpacity style={styles.btnAssigment} onPress={assignment}>
         <Text style={styles.txtAssigment}>NEW ASSIGNMENT</Text>
       </TouchableOpacity>
     </View>
   )
 }
 
-export default pipe(General)
+export default pipe(
+  withHandlers({
+    assignment: ({ navigation }) => () => {
+      navigation.navigate('AssignUser')
+    },
+  }),
+  General,
+)
