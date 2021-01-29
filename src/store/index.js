@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger'
-import rootReducer from '../reducers/rootReducer';
+import rootReducer from '../reducers';
 import sagaMiddleware from '../middleware/sagaMiddleWare';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
