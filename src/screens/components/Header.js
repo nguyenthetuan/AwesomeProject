@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, TouchableOpacity, SafeAreaView, StyleSheet, Dimensions } from 'react-native'
-import { Fonts, Colors } from 'src/assets'
+import { Fonts, Colors, Vectors } from 'src/assets'
 import { pipe, withProps, withHandlers } from '@synvox/rehook'
 import { Text } from 'react-native-elements'
 import { withNavigationContext } from 'src/screens/hooks/withNavigation'
@@ -41,14 +41,20 @@ const styles = StyleSheet.create({
     fontSize: Fonts.fontSize[14],
     alignSelf: 'flex-end',
   },
+  iconRight: {
+    tintColor: Colors.white
+  }
 })
 
-const Header = ({ title, onGoBack, leftTittle, rightTitle, rightOnpress }) => {
+const IconDel = Vectors.iconDel;
+
+
+const Header = ({ title, onGoBack, leftTittle, rightTitle, rightOnpress, disableLeftHeader, RghtIcon }) => {
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <View style={styles.wrapperHeader}>
         <TouchableOpacity style={styles.btBack} onPress={onGoBack}>
-          <Text style={styles.textBack}>{leftTittle || 'Back'}</Text>
+          <Text style={styles.textBack}>{leftTittle || disableLeftHeader && 'Back'}</Text>
         </TouchableOpacity>
 
         <Text style={styles.title}>{title || ''}</Text>
@@ -58,8 +64,14 @@ const Header = ({ title, onGoBack, leftTittle, rightTitle, rightOnpress }) => {
             <Text style={styles.textRightBtn}>{rightTitle || ''}</Text>
           </TouchableOpacity>
         ) : (
-          <View style={styles.viewEmpty} />
-        )}
+            <View style={styles.viewEmpty} />
+          )}
+        {RghtIcon && (
+          <TouchableOpacity style={{ flex: 1 }} onPress={rightOnpress}>
+            <IconDel />
+          </TouchableOpacity>
+        ) 
+          }
       </View>
     </SafeAreaView>
   )

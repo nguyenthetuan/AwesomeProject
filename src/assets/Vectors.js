@@ -15,6 +15,7 @@ import CropCamera from './vector/cropCamera.svg'
 import Information from './vector/information.svg'
 import addUser from './vector/addUser.svg'
 import Calendar from './vector/Calendar'
+import RightIcon from './vector/rightIcon'
 
 const vectors = {
   OpenEye,
@@ -34,6 +35,7 @@ const vectors = {
   Information,
   addUser,
   Calendar,
+  RightIcon
 }
 
 export default vectors

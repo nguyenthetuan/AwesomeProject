@@ -19,12 +19,12 @@ const CustomTabBarV = ({ onPressItem, state }) => {
         const isActiveTab = index === state.index
         const color = isActiveTab ? Colors.orangeNeonCarrot : Colors.greyChateau
         return (
-          <>
-            <TouchableOpacity onPress={onPressItem(index)}>
+          <View key={index}>
+            <TouchableOpacity key={index} onPress={onPressItem(index)}>
               <Text style={{ ...styles.labelTab, color, ...(isActiveTab && { fontFamily: Fonts.fontFamily.NunitoSansBold }) }}>{item}</Text>
             </TouchableOpacity>
             {index < tabs.length - 1 && <View style={styles.lineBorder} />}
-          </>
+          </View>
         )
       })}
     </View>

@@ -98,7 +98,7 @@ const Steps = ({ listStep, statusSteps, onPressStep }) => {
         <View style={styles.body}>
           {listStep.map((item, index) => {
             return (
-              <>
+              <View key={index}>
                 <TouchableOpacity style={styles.btStep} key={`${index}`} onPress={onPressStep(index)}>
                   <Text style={styles.nameStep}>{`Step ${index}: Sed do eiusmod tempor incididunt Sed do eiusmod tempor incididunt`}</Text>
                   {statusSteps[index] ? <Up /> : <Down />}
@@ -131,7 +131,7 @@ const Steps = ({ listStep, statusSteps, onPressStep }) => {
                   </View>
                 )}
                 <View style={styles.line} />
-              </>
+              </View>
             )
           })}
         </View>

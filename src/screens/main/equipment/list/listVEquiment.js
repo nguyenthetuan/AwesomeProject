@@ -8,12 +8,13 @@ const IconSearch = Vectors.Search
 
 const renderItem = ({ onPressItem }) => ({ item, index }) => {
   return (
-    <TouchableOpacity onPress={onPressItem} style={styles.itemTask}>
+    <TouchableOpacity onPress={onPressItem({ item })} style={styles.itemTask}>
       <Image source={require('src/assets/images/itemTask.png')} resizeMode="contain" />
       <View style={styles.leftItem}>
         <Text style={styles.txtTitle} numberOfLines={1}>
           {item.title}
         </Text>
+        <Text style={styles.content}>{item.content}</Text>
         <Text style={styles.txtDescription} numberOfLines={1}>
           {item.description}
         </Text>
@@ -21,6 +22,8 @@ const renderItem = ({ onPressItem }) => ({ item, index }) => {
     </TouchableOpacity>
   )
 }
+
+const keyExtractor = (item, index) => `${index}`
 
 const footer = (dataConvert) => {
   return (
@@ -30,10 +33,10 @@ const footer = (dataConvert) => {
   )
 }
 
-const listV = ({ dataConvert, onPressItem, changeText, sortDataConvert, onPressNewTemplate }) => {
+const listEquipment = ({ dataConvert, onPressItem, termData, changeText, sortDataConvert, navigation }) => {
   return (
     <View style={styles.container}>
-      <Header title="Create Task" leftTittle="Cancel" rightTitle="New Template" rightOnpress={onPressNewTemplate} />
+      <Header title="Equipment" disableLeftHeader={false} />
       <View style={styles.body}>
         <View style={styles.textInputSearch}>
           <TextInput onChangeText={changeText} style={styles.txtInput} placeholder="Enter keywords" />
@@ -58,6 +61,8 @@ const listV = ({ dataConvert, onPressItem, changeText, sortDataConvert, onPressN
     </View>
   )
 }
+
+export default listEquipment
 
 const styles = StyleSheet.create({
   container: {
@@ -123,6 +128,10 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.fontFamily.NunitoSansRegular,
     fontSize: Fonts.fontSize[12],
   },
+  content: {
+    fontFamily: Fonts.fontFamily.NunitoSansSemiBold,
+    color: Colors.black02,
+    fontSize: Fonts.fontSize[14]
+  },
 })
 
-export default listV

@@ -92,7 +92,7 @@ const ListView = ({ dataConvert, changeText, onPressItem, sortBy, onPressDemo })
         <FlatList
           data={dataConvert}
           showsVerticalScrollIndicator={false}
-          keyExtractor={keyExtractor}
+          keyExtractor={(item, index) => String(index)}
           renderItem={renderItem({ onPressItem })}
           ListFooterComponent={footer(dataConvert)}
         />

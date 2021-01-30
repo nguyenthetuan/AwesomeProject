@@ -21,6 +21,8 @@ import NewTaskTemplate from '@src/screens/main/template/newTaskTemplate'
 import CreatStepTaskTemplate from 'src/screens/main/template/newTaskTemplate/listStep/newTemplate/NewTaskTemplateVM'
 import CreateUser from 'src/screens/main/template/assignUser/CreateUser'
 import AssignUser from '@src/screens/main/template/assignUser/AssignUser'
+import EquimentDetail from 'src/screens/main/equipment/detail'
+import Notification from 'src/screens/main/profile/Notification'
 
 const styles = StyleSheet.create({
   btAddNew: {
@@ -222,6 +224,9 @@ const MainStack = ({ navigation }) => {
         <ContainerStack.Screen component={CreatStepTaskTemplate} name="CreatStepTaskTemplate" options={{ headerShown: false }} />
         <ContainerStack.Screen component={CreateUser} name="CreateUser" options={{ headerShown: false }} />
         <ContainerStack.Screen component={AssignUser} name="AssignUser" options={{ headerShown: false }} />
+        <ContainerStack.Screen component={EquimentDetail} name="EquimentDetail" options={{ headerShown: false }}/>
+        <ContainerStack.Screen component={Notification} name="Notification" options={{ headerShown: false }}/>
+
       </ContainerStack.Navigator>
     </>
   )

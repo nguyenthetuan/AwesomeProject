@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+    <defs>
+        <clipPath id="clip-path">
+            <path id="Rectangle_14" d="M0 0H14.5V7.152H0z" class="cls-1"/>
+        </clipPath>
+        <style>
+            .cls-1{fill:none}
+        </style>
+    </defs>
+    <g id="Component_7_9" transform="rotate(-90 8 8)">
+        <path id="Path_121" d="M0 16h16V0H0z" class="cls-1"/>
+        <g id="Group_107" transform="translate(1 4.848)">
+            <g id="Group_106" clip-path="url(#clip-path)">
+                <path id="Path_122" fill="none" stroke="#0e38b1" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5px" d="M13.75.751L10.5 3.577 7.25 6.4 4 3.577.75.751"/>
+            </g>
+        </g>
+    </g>
+</svg>

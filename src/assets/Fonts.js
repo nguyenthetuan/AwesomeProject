@@ -11,6 +11,7 @@ const fontSize = {
   25: 25,
   26: 26,
   28: 28,
+  40: 40,
   100: 100,
 }
 const fontFamily = {
