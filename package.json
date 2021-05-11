@@ -20,7 +20,7 @@
     "@synvox/rehook": "^0.0.17",
     "dayjs": "^1.10.2",
     "formik": "^2.2.6",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "react": "16.11.0",
     "react-native": "0.62.2",
